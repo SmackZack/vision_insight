@@ -1,0 +1,20 @@
+body {
+  background-color: black;
+}
+
+.main {
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.127)
+}
+
+.main1 {
+  height: 100vh;
+}
+
+input.ng-invalid.ng-touched{
+  border-bottom: red 2px solid !important;
+}
+
+#part2 {
+  display: none;
+}

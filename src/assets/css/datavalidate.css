@@ -1,0 +1,72 @@
+body {
+  background-color: rgba(211, 211, 211, 0.205);
+}
+
+#maincontent {
+  margin-left: 300px;
+
+}
+
+.table1, .table2, .table3, .table4 {
+  overflow-y: scroll;
+}
+
+.table1 {
+  height: 43vh;
+}
+
+.table2 {
+  height: 43vh;
+}
+
+.table3 {
+  height: 88vh;
+}
+
+.table4 {
+  height: 66vh;
+}
+
+.map {
+  height: 12vh;
+}
+
+.accept {
+  height: 5vh;
+}
+
+.factoryRes {
+  padding-top: 40px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+td, th {
+  border: solid 0.1px rgba(0, 0, 0, 0.192);
+}
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    color: blue;
+    background-color: #f3f2f1;
+}
+
+.t .table1,.t .table2 {
+  height: 40vh;
+}
+
+.t .table3 {
+  height: 83vh;
+}
+
+.t .table4 {
+  height: 60vh;
+}
+
+.t {
+  margin-left: 0px !important;
+}
+
+

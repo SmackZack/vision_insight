@@ -1,0 +1,36 @@
+body {
+    margin: 0px;
+}
+
+/* @font-face {
+    font-family: corporateFont;
+    src: url(../fonts/FontsFree-Net-Museo-Sans8.ttf);
+  } */
+
+.mainpage {
+    height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+}
+
+input::placeholder {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+    font-style: normal !important;
+}
+
+.form-container:hover {
+    box-shadow: 0 0 3rem rgba(0, 0, 0, 0.473) !important;
+    /* font-family: corporateFont !important; */
+}
+
+.m-6 {
+    padding: 100px 0px;
+}
+
+.invalid {
+    box-shadow: 0 0 1.5px 1px red !important;
+    border-color: #dc3545 !important;
+}
+
+#dialing-code {
+    margin-top: 1px;
+}

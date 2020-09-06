@@ -1,0 +1,14 @@
+
+
+
+#maincontent {
+  z-index: -2;
+}
+
+.factoryRes {
+  width: 300px;
+}
+
+#secsidebar1 {
+  display: none;
+}

@@ -1,0 +1,166 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>HTML Drag and Drop</title>
+    <meta
+      name="description"
+      content="Drag-and-drop HTML elements into a GoJS Diagram using jQuery."
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Copyright 1998-2020 by Northwoods Software Corporation. -->
+
+    <link rel="stylesheet" href="css/jquery-ui.min.css" />
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+
+    <script src="js/go-debug.js"></script>
+    <!-- this is only for the GoJS Samples framework -->
+
+    <script id="code">
+      function init() {
+        if (window.goSamples) goSamples(); // init for these samples -- you don't need to call this
+        // Note that we do not use $ here as an alias for go.GraphObject.make because we are using $ for jQuery
+        var $$ = go.GraphObject.make; // for conciseness in defining templates
+
+        var myDiagram = $$(
+          go.Diagram,
+          "myDiagramDiv", // must name or refer to the DIV HTML element
+          {
+            initialPosition: new go.Point(0, 0),
+            "animationManager.isEnabled": false,
+          }
+        );
+        var blue = "#0078d4";
+        var lightblue = "#deecf9";
+        function deletef(e, obj) {
+          e.diagram.commandHandler.deleteSelection();
+        }
+
+        myDiagram.nodeTemplate = $$(
+          go.Node,
+          "Spot",
+          {
+            selectionAdorned: false,
+            locationSpot: go.Spot.Center,
+            fromSpot: go.Spot.Right,
+            toSpot: go.Spot.Left,
+          },
+          new go.Binding("location", "loc", go.Point.parse),
+          $$(go.Shape, "RoundedRectangle", {
+            fill: lightblue,
+            parameter1: "4",
+            stroke: blue,
+            strokeWidth: 1,
+            width: 180,
+            height: 110,
+          }),
+          $$(
+            go.TextBlock,
+            {
+              font: "12pt Segoe UI,sans-serif",
+              width: 179,
+              height: 30,
+              alignment: go.Spot.Left,
+              verticalAlignment: go.Spot.Center,
+              background: blue,
+              stroke: "white",
+              alignment: new go.Spot(0.5, 0, 0, 17.5),
+            },
+            new go.Binding("text", "text").makeTwoWay()
+          ),
+          $$(go.TextBlock, "Copy Data", {
+            font: "12pt  Segoe UI,sans-serif",
+            background: lightblue,
+            alignment: new go.Spot(0.5, 0.5, 0, 0),
+          }),
+          $$(go.Picture, "js/1.png", {
+            click: deletef,
+            width: 20,
+            height: 20,
+            alignment: new go.Spot(0.3, 1, 0, -20),
+          }),
+          $$(go.Picture, "js/2.png", {
+            width: 20,
+            height: 20,
+            alignment: new go.Spot(0.7, 1, 0, -20),
+          })
+        );
+
+        $(".dragme").draggable({
+          stack: "#myDiagramDiv",
+          revert: true,
+          revertDuration: 0,
+        });
+
+        $("#myDiagramDiv").droppable({
+          activeClass: "ui-state-highlight",
+          drop: function (event, ui) {
+            var elt = ui.draggable.first();
+            var text = elt[0].textContent;
+            var x = ui.offset.left - $(this).offset().left;
+            var y = ui.offset.top - $(this).offset().top;
+            var p = new go.Point(x, y);
+            var q = myDiagram.transformViewToDoc(p);
+            var model = myDiagram.model;
+            model.startTransaction("drop");
+            model.addNodeData({
+              text: text,
+              loc: go.Point.stringify(q),
+            });
+            model.commitTransaction("drop");
+          },
+        });
+
+        myDiagram.linkTemplate = $$(
+          go.Link,
+          // default routing is go.Link.Normal
+          // default corner is 0
+          { routing: go.Link.Orthogonal, corner: 2 },
+          // the link path, a Shape
+          $$(go.Shape, { strokeWidth: 1.5, stroke: "green" })
+
+          // if we wanted an arrowhead we would also add another Shape with toArrow defined:
+          // $(go.Shape, { toArrow: "Standard", stroke: null }
+        );
+        var nodeDataArray = [{ key: "Alpha" }, { key: "Beta" }];
+        var linkDataArray = [{ from: "Alpha", to: "Beta" }];
+
+        myDiagram.model = new go.GraphLinksModel(nodeDataArray, linkDataArray);
+      }
+    </script>
+  </head>
+  <body onload="init()">
+    <div id="sample">
+      <div style="width: 100%; display: flex; justify-content: space-between;">
+        <div
+          id="myItems"
+          style="
+            width: 120px;
+            height: 700px;
+            margin-right: 2px;
+            border: solid 1px black;
+          "
+        >
+          <ul>
+            <li class="dragme">First</li>
+            <li>Second</li>
+            <li class="dragme">Third</li>
+            <li>Fourth</li>
+            <li>Fifth</li>
+          </ul>
+        </div>
+        <div
+          id="myDiagramDiv"
+          style="flex-grow: 1; height: 700px; border: solid 1px black;"
+        ></div>
+      </div>
+      <div id="description">
+        <p>
+          This demonstrates using jQuery drag-and-drop capability to allow the
+          user to drag HTML list items into a GoJS diagram.
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

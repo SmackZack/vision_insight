@@ -1,0 +1,1798 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Data Pull</title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+
+    <link rel="stylesheet" href="./css/fluent.css" />
+    <link rel="stylesheet" href="./css/micon.min.css" />
+    <link rel="stylesheet" href="./css/all.css" />
+    <link
+      rel="stylesheet"
+      href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/11.0.0/css/fabric.min.css"
+    />
+    <link rel="stylesheet" href="css/main1.css" />
+    <link rel="stylesheet" href="css/jquery-ui.min.css" />
+    <link rel="stylesheet" href="css/landingm.css" />
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/jquery-ui.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <script src="./js/go.js"></script>
+  </head>
+
+  <body>
+    <!-- nav bar -->
+    <div class="row blue topnavbar text-white m-0 p-0 no-gutters position-relative shadow-lg">
+    <div class="col-2 d-flex align-items-center justify-content-center mr-lg-auto">
+      <div class="h6 text-white m-0 px-3 header font-weight-lighter">Vision Insight <i
+          class="fas px-2 fa-caret-right pr-2"></i><span class="font-weight-lighter mb-2">AIMDM</span></a></div>
+    </div>
+    <div class="col-4 d-flex flex-column justify-content-center position-relative">
+      <form class="form-inline d-flex justify-content-center md-form">
+        <i class="fas fa-search text-primary f-13" aria-hidden="true"
+          style="position: absolute; top: 35%; left: 7%;"></i>
+        <input class="w-100 py-0 px-5" height="26px" type="text" placeholder="Search Resources" aria-label="Search" />
+      </form>
+    </div>
+    <div class="col-sm-6 col-lg-4 d-flex justify-content-end float-right">
+      <ul class="nav topnav">
+        <li class="nav-item">
+          <a class="nav-link text-white px-2" href="#!"><i class="fal fa-megaphone"></i></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white p-2" href="#!"><i class="fal fa-retweet"></i></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white p-2" href="#!"><i class="fal fa-bell"></i></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white p-2" href="#!"><i class="fal fa-smile"></i></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white p-2" href="#!">?</a>
+        </li>
+      </ul>
+      <div class="nav-item media px-2">
+        <div class="media-body d-none d-md-block" style="height: 40px;">
+          <div class="font-weight-semibold f-12 pt-1 m-0">Someone@outlook.com</div>
+          <div class="f-10 text-right">Default Directory</div>
+        </div>
+        <img class="rounded-circle p-1 m-0" height="40px" width="40px" src="img/avatar.png"
+          alt="Generic placeholder image" />
+      </div>
+    </div>
+  </div>
+    <!-- nav bar -->
+    <div class="content">
+      <div class="sidebar" id="sidebar">
+        <button
+          class="btn p-0 bg-transparent"
+          onclick="openSidebar()"
+          id="sidebar3"
+        >
+          <i class="fal fa-angle-double-right"></i>
+        </button>
+        <button
+          class="btn p-0 bg-transparent"
+          onclick="closeSidebar()"
+          id="sidebar4"
+        >
+          <i class="fal fa-angle-double-left"></i>
+        </button>
+        <ul class="nav h4 flex-column">
+          <li class="nav-item px-2">
+            <a class="nav-link px-1 py-2" href="#!"
+              ><i class="fad fa-home-lg-alt"></i>
+              <span
+                class="text-dark ms-fontSize-18 ms-fontWeight-semibold"
+                id="sidebar1"
+              >
+                Data Factory
+              </span></a
+            >
+          </li>
+          <li class="nav-item px-2">
+            <a class="nav-link px-1 py-2" href="#!"
+              ><i class="fad fa-pencil"></i>
+              <span
+                class="text-dark ms-fontSize-18 ms-fontWeight-semibold"
+                id="sidebar2"
+              >
+                Editor
+              </span></a
+            >
+          </li>
+        </ul>
+      </div>
+
+
+        <div class="dsbar py-3 shadow" id="selectdataset">
+        <header>
+          <div class="f-13 px-4 mb-3  ms-fontWeight-bold">New Dataset</div>
+          <p class="px-4 f-12">
+            In pipeline activities and data flows, reference a dataset to
+            specify the location and structure of your data within a data store.
+          </p>
+          <p class="px-4 f-12 p-0 mb-2">
+            Select a data store
+          </p>
+          <form
+            class="form-inline d-flex justify-content-center md-form form-sm mt-0 mx-4"
+          >
+            <i
+              class="fal fa-search position-absolute text-primary"
+              aria-hidden="true"
+              style="left: 1.7em;"
+            ></i>
+            <input
+              class="form-control form-control-sm border p-1 w-100 px-4"
+              type="text"
+              placeholder="Search"
+              aria-label="Search"
+            />
+          </form>
+        </header>
+        <div class="content">
+          <ul class="nav nav-tabs fluent-tabs bg-white my-2 px-4 d-flex justify-content-around text-primary" id="myTab" role="tablist">
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                id="home-tab"
+                data-toggle="tab"
+                href="#all"
+                role="tab"
+                aria-controls="home"
+                aria-selected="true"
+                >All</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                id="profile-tab"
+                data-toggle="tab"
+                href="#azure"
+                role="tab"
+                aria-controls="profile"
+                aria-selected="false"
+                >Azure</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                id="contact-tab"
+                data-toggle="tab"
+                href="#database"
+                role="tab"
+                aria-controls="contact"
+                aria-selected="false"
+                >Database</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                id="contact-tab"
+                data-toggle="tab"
+                href="#File"
+                role="tab"
+                aria-controls="contact"
+                aria-selected="false"
+                >File</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                id="contact-tab"
+                data-toggle="tab"
+                href="#GenericProtocol"
+                role="tab"
+                aria-controls="contact"
+                aria-selected="false"
+                >GenericProtocol</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                id="contact-tab"
+                data-toggle="tab"
+                href="#NoSQL"
+                role="tab"
+                aria-controls="contact"
+                aria-selected="false"
+                >NoSQL</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                id="contact-tab"
+                data-toggle="tab"
+                href="#Serviceandapps"
+                role="tab"
+                aria-controls="contact"
+                aria-selected="false"
+                >Serviceandapps</a
+              >
+            </li>
+          </ul>
+          <div class="tab-content px-4 my-3" id="myTabContent">
+            <div
+              class="tab-pane fade show active"
+              id="all"
+              role="tabpanel"
+              aria-labelledby="home-tab"
+            >
+              <div class="d-flex flex-wrap content2">
+                <div  class="box border p-2" onclick="opendatatype()" >
+                  <img src="img/Screenshot (67).png" alt="">
+                  <div>Amazon Marketplace Web Service</div>
+                </div>
+                 <div  class="box border p-2" onclick="opendatatype()">
+                  <img src="img/Screenshot (68).png" alt="">
+                  <div>Amazon Redshift</div>
+                </div>
+                 <div  class="box border p-2" onclick="opendatatype()">
+                  <img src="img/Screenshot (69).png" alt="">
+                  <div>Amazon S3</div>
+                </div>
+                 <div  class="box border p-2" onclick="opendatatype()">
+                  <img src="img/Screenshot (71).png" alt="">
+                  <div>Apache Alpha</div>
+                </div>
+                 <div  class="box border p-2" onclick="opendatatype()">
+                  <img src="img/Screenshot (70).png" alt="">
+                  <div>Azure Blob Storage</div>
+                </div>
+                 <div  class="box border p-2" onclick="opendatatype()">
+                  <img src="img/Screenshot (66).png" alt="">
+                  <div>Azure Cosmos DB (Mongo DB API)</div>
+                </div>
+                 <div  class="box border p-2" onclick="opendatatype()">
+                  <img src="img/Screenshot (66).png" alt="">
+                  <div>Azure Cosmos DB (SQL API)</div>
+                </div>
+                 <div  class="box border p-2" onclick="opendatatype()">
+                  <img src="img/Screenshot (73).png" alt="">
+                  <div>Azure Data Explorer (Kusto)</div>
+                </div>
+                 <div  class="box border p-2" onclick="opendatatype()">
+                  <img src="img/Screenshot (72).png" alt="">
+                  <div>Azure Data Lake Storage Gen1</div>
+                </div>
+                 <div  class="box border p-2" onclick="opendatatype()">
+                  <img src="img/Screenshot (70).png" alt="">
+                  <div>Azure Data Lake Sotrage Gen2</div>
+                </div>
+
+                 <div  class="box border p-2" onclick="opendatatype()">
+                  <img src="img/Screenshot (63).png" alt="">
+                  <div>Azure File Storage</div>
+                </div>
+                 <div  class="box border p-2" onclick="opendatatype()">
+                  <img src="img/Screenshot (63).png" alt="">
+                  <div>Azure Database for MYSQL</div>
+                </div>
+                 <div  class="box border p-2" onclick="opendatatype()">
+                  <img src="img/Screenshot (62).png" alt="">
+                  <div>Azure SQL Database Managed  Instance</div>
+                </div>
+                 <div  class="box border p-2" onclick="opendatatype()">
+                  <img src="img/Screenshot (64).png" alt="">
+                  <div>Azure Search</div>
+                </div>
+                 <div  class="box border p-2" onclick="opendatatype()">
+                  <img src="img/Screenshot (63).png" alt="">
+                  <div>Azure Synapse Analytics (formerly SQL DW)</div>
+                </div>
+                 <div  class="box border p-2" onclick="opendatatype()">
+                  <img src="img/Screenshot (65).png" alt="">
+                  <div>Azure Table Storage</div>
+                </div>
+                 <div  class="box border p-2" onclick="opendatatype()">
+                  <img src="img/Screenshot (71).png" alt="">
+                  <div>Cassandra</div>
+                </div>
+                 <div  class="box border p-2" onclick="opendatatype()">
+                  <img src="img/Screenshot (76).png" alt="">
+                  <div>Amazon Marketplace Web Service</div>
+                </div>
+                <div  class="box border p-2" onclick="opendatatype()">
+                  <img src="img/" alt="">
+                  <div>Amazon Marketplace Web Service</div>
+                </div>
+                <div  class="box border p-2" onclick="opendatatype()">
+                  <img src="img/" alt="">
+                  <div>Amazon Marketplace Web Service</div>
+                </div>
+                <div  class="box border p-2" onclick="opendatatype()">
+                  <img src="img/" alt="">
+                  <div>Amazon Marketplace Web Service</div>
+                </div>
+                <div  class="box border p-2" onclick="opendatatype()">
+                  <img src="img/" alt="">
+                  <div>Amazon Marketplace Web Service</div>
+                </div>
+                <div  class="box border p-2" onclick="opendatatype()">
+                  <img src="img/" alt="">
+                  <div>Amazon Marketplace Web Service</div>
+                </div>
+                <div  class="box border p-2" onclick="opendatatype()">
+                  <img src="img/" alt="">
+                  <div>Amazon Marketplace Web Service</div>
+                </div>
+                <div  class="box border p-2" onclick="opendatatype()">
+                  <img src="img/" alt="">
+                  <div>Amazon Marketplace Web Service</div>
+                </div>
+                <div  class="box border p-2" onclick="opendatatype()">
+                  <img src="img/" alt="">
+                  <div>Amazon Marketplace Web Service</div>
+                </div>
+                <div  class="box border p-2" onclick="opendatatype()">
+                  <img src="img/" alt="">
+                  <div>Amazon Marketplace Web Service</div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="tab-pane fade"
+              id="azure"
+              role="tabpanel"
+              aria-labelledby="profile-tab"
+            >
+             <div class="d-flex flex-wrap content2">
+                <div  class="box border p-2" onclick="opendatatype()">
+                  <img src="img/Screenshot (70).png" alt="">
+                  <div>Azure Blob Storage</div>
+                </div>
+                 <div  class="box border p-2" onclick="opendatatype()">
+                  <img src="img/Screenshot (66).png" alt="">
+                  <div>Azure Cosmos DB (Mongo DB API)</div>
+                </div>
+                 <div  class="box border p-2" onclick="opendatatype()">
+                  <img src="img/Screenshot (66).png" alt="">
+                  <div>Azure Cosmos DB (SQL API)</div>
+                </div>
+                 <div  class="box border p-2" onclick="opendatatype()">
+                  <img src="img/Screenshot (73).png" alt="">
+                  <div>Azure Data Explorer (Kusto)</div>
+                </div>
+                 <div  class="box border p-2" onclick="opendatatype()">
+                  <img src="img/Screenshot (72).png" alt="">
+                  <div>Azure Data Lake Storage Gen1</div>
+                </div>
+                 <div  class="box border p-2" onclick="opendatatype()">
+                  <img src="img/Screenshot (70).png" alt="">
+                  <div>Azure Data Lake Sotrage Gen2</div>
+                </div>
+
+                 <div  class="box border p-2" onclick="opendatatype()">
+                  <img src="img/Screenshot (63).png" alt="">
+                  <div>Azure File Storage</div>
+                </div>
+             </div>
+            </div>
+            <div
+              class="tab-pane fade"
+              id="database"
+              role="tabpanel"
+              aria-labelledby="contact-tab"
+            >
+
+            </div>
+          </div>
+        </div>
+        <nav class="d-flex justify-content-between align-items-center px-4">
+          <button type="button" class="btn btn-primary py-1 px-2 f-12">Submit</button>
+          <button type="button" class="btn btn-light border py-1 px-2 f-12" onclick="canceldataset()">Cancel</button>
+        </nav>
+      </div>
+       <div class="dsbar py-3 shadow" id="selectdatatype">
+        <header>
+          <div class="f-13 px-4 mb-3 ms-fontWeight-bold">Select Format</div>
+          <p class="px-4 f-12">
+            Chose format and type of your data
+          </p>
+        </header>
+        <div class="content2">
+          <div class="d-flex flex-wrap px-4">
+          <div  class="box border p-2"  onclick="opendataform()">
+            <img src="img/filetype/Screenshot (60).png" alt="">
+            <div class="">Avro</div>
+          </div>
+          <div  class="box border p-2"  onclick="opendataform()">
+            <img src="img/filetype/Screenshot (61).png" alt="">
+            <div class="">Binary</div>
+          </div>
+          <div  class="box border p-2"  onclick="opendataform()">
+            <img src="img/filetype/Screenshot (62).png" alt="">
+            <div class="">Delimented Text</div>
+          </div>
+          <div  class="box border p-2"  onclick="opendataform()">
+            <img src="img/filetype/Screenshot (63).png" alt="">
+            <div class="">Excel</div>
+          </div>
+          <div  class="box border p-2"  onclick="opendataform()">
+            <img src="img/filetype/Screenshot (64).png" alt="">
+            <div class="">Json</div>
+          </div>
+          <div  class="box border p-2"  onclick="opendataform()">
+            <img src="img/filetype/Screenshot (65).png" alt="">
+            <div class="">ORC</div>
+          </div>
+          <div  class="box border p-2"  onclick="opendataform()">
+            <img src="img/filetype/Screenshot (66).png" alt="">
+            <div class="">Parquet</div>
+          </div>
+          <div  class="box border p-2"  onclick="opendataform()">
+            <img src="img/filetype/Screenshot (67).png" alt="">
+            <div class="">XML</div>
+          </div>
+        </div>
+        </div>
+        <nav class="d-flex justify-content-between align-items-center border px-4 bg-white">
+         <div>
+            <button type="button" class="btn btn-primary py-1 px-2 f-12">Submit</button>
+             <button type="button" class="btn btn-light border py-1 px-2 f-12">Back</button>
+         </div>
+          <button type="button" class="btn btn-light border py-1 px-2 f-12" onclick="canceldataset()">Cancel</button>
+        </nav>
+      </div>
+      <div class="dsbar py-3 shadow" id="datasetform">
+        <header>
+          <div class="f-13 px-4 mb-3 ms-fontWeight-bold">Set Properties</div>
+          <form action="" class="px-4"  id="json">
+            <div class="form-group d-none">
+    <label for="exampleInputEmail1" class="f-12">Source Name</label>
+    <input type="text" class="form-control py-1 border-secondary" id="exampleInputEmail1" aria-describedby="emailHelp" name="Sourcename" value="AzureBlobStorage">
+  </div>
+             <div class="form-group">
+    <label for="exampleInputEmail1" class="f-12">Containter Name</label>
+    <input type="text" class="form-control py-1 border-secondary" id="exampleInputEmail1" aria-describedby="emailHelp" name="SourceType">
+  </div>
+    <div class="form-group">
+    <label for="exampleInputEmail1" class="f-12">Connection String</label>
+    <input type="text" class="form-control py-1 border-secondary" id="exampleInputEmail1" aria-describedby="emailHelp" name="Sourcedetails.ConeectionString">
+  </div>
+    <div class="form-group">
+    <label for="exampleInputEmail1" class="f-12">File Name</label>
+    <input type="text" class="form-control py-1 border-secondary" id="exampleInputEmail1" aria-describedby="emailHelp" name="FileName">
+  </div>
+    <div class="form-group">
+    <label for="exampleInputEmail1" class="f-12">Delimeter</label>
+    <input type="text" class="form-control py-1 border-secondary" id="exampleInputEmail1" aria-describedby="emailHelp" name="Sourcedetails.Delimeter">
+  </div>
+    <div class="form-group">
+    <label for="exampleInputEmail1" class="f-12">FileType</label>
+    <input type="text" class="form-control py-1 border-secondary" id="exampleInputEmail1" aria-describedby="emailHelp" name="SourceType">
+  </div>
+    <div class="form-group">
+    <label for="exampleInputEmail1" class="f-12">File Path</label>
+    <input type="text" class="form-control py-1 border-secondary" id="exampleInputEmail1" aria-describedby="emailHelp" name="Sourcedetails.FilePath">
+  </div>
+    <div class="form-group">
+    <label for="exampleInputEmail1" class="f-12">Frequency</label>
+    <input type="text" class="form-control py-1 border-secondary" id="exampleInputEmail1" aria-describedby="emailHelp" name="Sourcedetails.Frequency">
+  </div>
+          </form>
+
+        </header>
+         <nav class="d-flex justify-content-between align-items-center border px-4 bg-white">
+         <div>
+            <button type="button" class="btn btn-primary py-1 px-2 f-12" id="submit1"  onclick="canceldataset()" >Submit</button>
+             <button type="button" class="btn btn-light border py-1 px-2 f-12">Back</button>
+         </div>
+          <button type="button" class="btn btn-light border py-1 px-2 f-12" onclick="canceldataset()">Cancel</button>
+        </nav>
+        <div class="d-none">
+          <nav class="d-flex justify-content-between align-items-center border px-4 bg-white">
+         <div>
+            <button type="button" class="btn btn-primary py-1 px-2 f-12" id="submit1"  onclick="canceldataset()" >Submit</button>
+             <button type="button" class="btn btn-light border py-1 px-2 f-12">Back</button>
+         </div>
+          <button type="button" class="btn btn-light border py-1 px-2 f-12" onclick="canceldataset()">Cancel</button>
+        </nav>
+        <nav class="d-flex justify-content-between align-items-center border px-4 bg-white">
+         <div>
+            <button type="button" class="btn btn-primary py-1 px-2 f-12" id="submit1"  onclick="canceldataset()" >Submit</button>
+             <button type="button" class="btn btn-light border py-1 px-2 f-12">Back</button>
+         </div>
+          <button type="button" class="btn btn-light border py-1 px-2 f-12" onclick="canceldataset()">Cancel</button>
+        </nav>
+        <nav class="d-flex justify-content-between align-items-center border px-4 bg-white">
+         <div>
+            <button type="button" class="btn btn-primary py-1 px-2 f-12" id="submit1"  onclick="canceldataset()" >Submit</button>
+             <button type="button" class="btn btn-light border py-1 px-2 f-12">Back</button>
+         </div>
+          <button type="button" class="btn btn-light border py-1 px-2 f-12" onclick="canceldataset()">Cancel</button>
+        </nav>
+        <nav class="d-flex justify-content-between align-items-center border px-4 bg-white">
+         <div>
+            <button type="button" class="btn btn-primary py-1 px-2 f-12" id="submit1"  onclick="canceldataset()" >Submit</button>
+             <button type="button" class="btn btn-light border py-1 px-2 f-12">Back</button>
+         </div>
+          <button type="button" class="btn btn-light border py-1 px-2 f-12" onclick="canceldataset()">Cancel</button>
+        </nav>
+        <nav class="d-flex justify-content-between align-items-center border px-4 bg-white">
+         <div>
+            <button type="button" class="btn btn-primary py-1 px-2 f-12" id="submit1"  onclick="canceldataset()" >Submit</button>
+             <button type="button" class="btn btn-light border py-1 px-2 f-12">Back</button>
+         </div>
+          <button type="button" class="btn btn-light border py-1 px-2 f-12" onclick="canceldataset()">Cancel</button>
+        </nav>
+        </div>
+      </div>
+      <div class="dsbar py-3 shadow" id="Newlinkedservice">
+           <header>
+          <div class="f-13 px-4 mb-3 ms-fontWeight-bold">New Linked Service(Azure Blob Storage)</div>
+          <form action="" class="px-4">
+
+  <div class="form-group">
+    <label for="exampleInputEmail1" class="f-12">Name</label>
+    <input type="text" class="form-control py-1 border-secondary" id="exampleInputEmail1" aria-describedby="emailHelp">
+  </div>  <div class="form-group">
+    <label for="exampleInputEmail1" class="f-12">Description</label>
+   <textarea class="form-control f-12" id="exampleFormControlTextarea1" rows="2"></textarea>
+  </div>
+   <div class="form-group">
+    <label for="exampleInputEmail1" class="f-12">Connect Via integeration runtime</label>
+      <a class="btn-white w-100 border border-secondary d-block py-1 px-2 text-dark f-12" data-toggle="collapse" href="#AuthenticationMethod" role="button" aria-expanded="false" aria-controls="collapseExample">
+    AutoResolveIntegerationRuntime
+  </a>
+  <div class="collapse" id="AuthenticationMethod">
+  <div class="card card-body border-secondary p-0">
+    <ul class="nav flex-column">
+
+      <li class="nav-item p-0"><a href="#" class="nav-link text-dark f-12">+New</a></li>
+       <li class="nav-item p-0"><a href="#" class="nav-link text-dark bg-secondary f-12"> AutoResolveIntegerationRuntime<a></li>
+    </ul>
+  </div>
+</div>
+  </div>
+   <div class="form-group">
+    <label for="exampleInputEmail1" class="f-12">SAS URls</label>
+      <a class="btn-white w-100 border border-secondary d-block py-1 px-2 text-dark f-12" data-toggle="collapse" href="#AuthenticationMetho" role="button" aria-expanded="false" aria-controls="collapseExample">
+    SAS URl
+  </a>
+  <div class="collapse" id="AuthenticationMetho">
+  <div class="card card-body border-secondary p-0">
+
+    <ul class="nav flex-column">
+        <li class="nav-item p-0"><a href="#" class="nav-link text-dark bg-secondary f-12">Account Key<a></li>
+      <li class="nav-item p-0"><a href="#" class="nav-link text-dark f-12">SAS URl</a></li>
+       <li class="nav-item p-0"><a href="#" class="nav-link text-dark bg-secondary f-12">Service Principal<a></li>
+
+           <li class="nav-item p-0"><a href="#" class="nav-link text-dark bg-secondary f-12">Managed Identity<a></li>
+    </ul>
+  </div>
+</div>
+  </div>
+   <div class="form-group">
+    <label for="exampleInputEmail1" class="f-12">Secret name <sup class="text-danger">*</sup></label>
+    <input type="text" class="form-control py-1 border-secondary" id="exampleInputEmail1" aria-describedby="emailHelp">
+  </div>  <div class="form-group">
+    <label for="exampleInputEmail1" class="f-12">Secret Version</label>
+    <input type="text" class="form-control py-1 border-secondary" id="exampleInputEmail1" aria-describedby="emailHelp">
+  </div>
+  <div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+  <label class="form-check-label" for="inlineRadio1"><div class="f-13">To linked Service</div> </label>
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+  <label class="form-check-label" for="inlineRadio2"><div class="f-13"> To file path</div> </label>
+</div>
+ </form>
+
+        </header>
+         <nav class="d-flex justify-content-between align-items-center border px-4 bg-white">
+         <div>
+            <button type="button" class="btn btn-primary py-1 px-2 f-12">Submit</button>
+             <button type="button" class="btn btn-light border py-1 px-2 f-12">Back</button>
+         </div>
+          <button type="button" class="btn btn-light border py-1 px-2 f-12" onclick="canceldataset()">Cancel</button>
+        </nav>
+
+      </div>
+      <div class="dsbar py-3 shadow" id="azureblob-delimited">
+           <header>
+          <div class="f-13 px-4 mb-3 ms-fontWeight-bold">Azure Blob-Delimited</div>
+          <form action="" class="px-4">
+
+  <div class="form-group">
+    <label for="exampleInputEmail1" class="f-12">Connection String</label>
+    <input type="text" class="form-control py-1 border-secondary" id="exampleInputEmail1" aria-describedby="emailHelp">
+  </div>  <div class="form-group">
+    <label for="exampleInputEmail1" class="f-12">Container Name</label>
+    <input type="text" class="form-control py-1 border-secondary" id="exampleInputEmail1" aria-describedby="emailHelp">
+  </div> <div class="form-group">
+    <label for="exampleInputEmail1" class="f-12">File Name</label>
+    <input type="text" class="form-control py-1 border-secondary" id="exampleInputEmail1" aria-describedby="emailHelp">
+  </div>
+      <div class="form-group">
+    <label for="exampleInputEmail1" class="f-12">Delimeter</label>
+    <input type="text" class="form-control py-1 border-secondary" id="exampleInputEmail1" aria-describedby="emailHelp">
+  </div>
+  <div class="form-group"><label for="filetype" class="f-12">File Type</label>  <input type="text" class="form-control py-1 border-secondary" id="exampleInputEmail1" aria-describedby="emailHelp"></div>
+  <div class="form-group"><label for="filepath" class="f-12">File Path</label>  <input type="text" class="form-control py-1 border-secondary" id="exampleInputEmail1" aria-describedby="emailHelp"></div>
+  <div class="form-group"><label for="Frequency" class="f-12">Frequency</label>  <input type="text" class="form-control py-1 border-secondary" id="exampleInputEmail1" aria-describedby="emailHelp"></div>
+</form></header>
+       <nav class="d-flex justify-content-between align-items-center px-4">
+          <button type="button" class="btn btn-primary py-1 px-2 f-12">Submit</button>
+          <button type="button" class="btn btn-light border py-1 px-2 f-12" onclick="canceldataset()">Cancel</button>
+        </nav>
+      </div>
+        <div class="dsbar py-3 shadow" id="azureblob-binary">
+           <header>
+          <div class="f-13 px-4 mb-3 ms-fontWeight-bold">Azure Blob-binary</div>
+          <form action="" class="px-4">
+
+  <div class="form-group">
+    <label for="exampleInputEmail1" class="f-12">Connection String</label>
+    <input type="text" class="form-control py-1 border-secondary" id="exampleInputEmail1" aria-describedby="emailHelp">
+  </div>  <div class="form-group">
+    <label for="exampleInputEmail1" class="f-12">Container Name</label>
+    <input type="text" class="form-control py-1 border-secondary" id="exampleInputEmail1" aria-describedby="emailHelp">
+  </div> <div class="form-group">
+    <label for="exampleInputEmail1" class="f-12">File Name</label>
+    <input type="text" class="form-control py-1 border-secondary" id="exampleInputEmail1" aria-describedby="emailHelp">
+  </div>
+
+  <div class="form-group"><label for="filetype" class="f-12">File Type</label>  <input type="text" class="form-control py-1 border-secondary" id="exampleInputEmail1" aria-describedby="emailHelp"></div>
+  <div class="form-group"><label for="filepath" class="f-12">File Path</label>  <input type="text" class="form-control py-1 border-secondary" id="exampleInputEmail1" aria-describedby="emailHelp"></div>
+  <div class="form-group"><label for="Frequency" class="f-12">Frequency</label>  <input type="text" class="form-control py-1 border-secondary" id="exampleInputEmail1" aria-describedby="emailHelp"></div>
+</form></header>
+       <nav class="d-flex justify-content-between align-items-center px-4">
+          <button type="button" class="btn btn-primary py-1 px-2 f-12">Submit</button>
+          <button type="button" class="btn btn-light border py-1 px-2 f-12" onclick="canceldataset()">Cancel</button>
+        </nav>
+      </div>
+        <div class="dsbar py-3 shadow" id="azureblob-json">
+           <header>
+          <div class="f-13 px-4 mb-3 ms-fontWeight-bold">Azure Blob-Json</div>
+          <form action="" class="px-4">
+
+  <div class="form-group">
+    <label for="exampleInputEmail1" class="f-12">Connection String</label>
+    <input type="text" class="form-control py-1 border-secondary" id="exampleInputEmail1" aria-describedby="emailHelp">
+  </div>  <div class="form-group">
+    <label for="exampleInputEmail1" class="f-12">Container Name</label>
+    <input type="text" class="form-control py-1 border-secondary" id="exampleInputEmail1" aria-describedby="emailHelp">
+  </div> <div class="form-group">
+    <label for="exampleInputEmail1" class="f-12">File Name</label>
+    <input type="text" class="form-control py-1 border-secondary" id="exampleInputEmail1" aria-describedby="emailHelp">
+  </div>
+      <div class="form-group">
+    <label for="exampleInputEmail1" class="f-12">Delimeter</label>
+    <input type="text" class="form-control py-1 border-secondary" id="exampleInputEmail1" aria-describedby="emailHelp">
+  </div>
+  <div class="form-group"><label for="filetype" class="f-12">File Type</label>  <input type="text" class="form-control py-1 border-secondary" id="exampleInputEmail1" aria-describedby="emailHelp"></div>
+  <div class="form-group"><label for="filepath" class="f-12">File Path</label>  <input type="text" class="form-control py-1 border-secondary" id="exampleInputEmail1" aria-describedby="emailHelp"></div>
+  <div class="form-group"><label for="Frequency" class="f-12">Frequency</label>  <input type="text" class="form-control py-1 border-secondary" id="exampleInputEmail1" aria-describedby="emailHelp"></div>
+</form></header>
+       <nav class="d-flex justify-content-between align-items-center px-4">
+          <button type="button" class="btn btn-primary py-1 px-2 f-12">Submit</button>
+          <button type="button" class="btn btn-light border py-1 px-2 f-12" onclick="canceldataset()">Cancel</button>
+        </nav>
+      </div>
+        <div class="dsbar py-3 shadow" id="azureblob-orc">
+           <header>
+          <div class="f-13 px-4 mb-3 ms-fontWeight-bold">Azure Blob-Orc</div>
+          <form action="" class="px-4">
+
+  <div class="form-group">
+    <label for="exampleInputEmail1" class="f-12">Connection String</label>
+    <input type="text" class="form-control py-1 border-secondary" id="exampleInputEmail1" aria-describedby="emailHelp">
+  </div>  <div class="form-group">
+    <label for="exampleInputEmail1" class="f-12">Container Name</label>
+    <input type="text" class="form-control py-1 border-secondary" id="exampleInputEmail1" aria-describedby="emailHelp">
+  </div> <div class="form-group">
+    <label for="exampleInputEmail1" class="f-12">File Name</label>
+    <input type="text" class="form-control py-1 border-secondary" id="exampleInputEmail1" aria-describedby="emailHelp">
+  </div>
+      <div class="form-group">
+    <label for="exampleInputEmail1" class="f-12">Delimeter</label>
+    <input type="text" class="form-control py-1 border-secondary" id="exampleInputEmail1" aria-describedby="emailHelp">
+  </div>
+  <div class="form-group"><label for="filetype" class="f-12">File Type</label>  <input type="text" class="form-control py-1 border-secondary" id="exampleInputEmail1" aria-describedby="emailHelp"></div>
+  <div class="form-group"><label for="filepath" class="f-12">File Path</label>  <input type="text" class="form-control py-1 border-secondary" id="exampleInputEmail1" aria-describedby="emailHelp"></div>
+  <div class="form-group"><label for="Frequency" class="f-12">Frequency</label>  <input type="text" class="form-control py-1 border-secondary" id="exampleInputEmail1" aria-describedby="emailHelp"></div>
+</form></header>
+       <nav class="d-flex justify-content-between align-items-center px-4">
+          <button type="button" class="btn btn-primary py-1 px-2 f-12">Submit</button>
+          <button type="button" class="btn btn-light border py-1 px-2 f-12" onclick="canceldataset()">Cancel</button>
+        </nav>
+      </div>
+        <div class="dsbar py-3 shadow" id="azureblob-parquet">
+           <header>
+          <div class="f-13 px-4 mb-3 ms-fontWeight-bold">Azure Blob-Delimited</div>
+          <form action="" class="px-4">
+
+  <div class="form-group">
+    <label for="exampleInputEmail1" class="f-12">Connection String</label>
+    <input type="text" class="form-control py-1 border-secondary" id="exampleInputEmail1" aria-describedby="emailHelp">
+  </div>  <div class="form-group">
+    <label for="exampleInputEmail1" class="f-12">Container Name</label>
+    <input type="text" class="form-control py-1 border-secondary" id="exampleInputEmail1" aria-describedby="emailHelp">
+  </div> <div class="form-group">
+    <label for="exampleInputEmail1" class="f-12">File Name</label>
+    <input type="text" class="form-control py-1 border-secondary" id="exampleInputEmail1" aria-describedby="emailHelp">
+  </div>
+      <div class="form-group">
+    <label for="exampleInputEmail1" class="f-12">Delimeter</label>
+    <input type="text" class="form-control py-1 border-secondary" id="exampleInputEmail1" aria-describedby="emailHelp">
+  </div>
+  <div class="form-group"><label for="filetype" class="f-12">File Type</label>  <input type="text" class="form-control py-1 border-secondary" id="exampleInputEmail1" aria-describedby="emailHelp"></div>
+  <div class="form-group"><label for="filepath" class="f-12">File Path</label>  <input type="text" class="form-control py-1 border-secondary" id="exampleInputEmail1" aria-describedby="emailHelp"></div>
+  <div class="form-group"><label for="Frequency" class="f-12">Frequency</label>  <input type="text" class="form-control py-1 border-secondary" id="exampleInputEmail1" aria-describedby="emailHelp"></div>
+</form></header>
+       <nav class="d-flex justify-content-between align-items-center px-4">
+          <button type="button" class="btn btn-primary py-1 px-2 f-12">Submit</button>
+          <button type="button" class="btn btn-light border py-1 px-2 f-12" onclick="canceldataset()">Cancel</button>
+        </nav>
+      </div>
+      <div class="dsbar py-3 shadow" id="azure-cosmos-db-sql-api">
+        <header>
+          <form action=""><div class="form-group"><label for="uri" class="f-12">URl</label>  <input type="text" class="form-control py-1 border-secondary" id="exampleInputEmail1" aria-describedby="emailHelp"></div>
+          <div class="form-group"><label for="key" class="f-12">KEY</label>  <input type="text" class="form-control py-1 border-secondary" id="exampleInputEmail1" aria-describedby="emailHelp"></div>
+          <div class="form-group"><label for="frequency" class="f-12">Frequency</label>  <input type="text" class="form-control py-1 border-secondary" id="exampleInputEmail1" aria-describedby="emailHelp"></div>
+          </form>
+        </header>
+      </div>
+        <div class="dsbar py-3 shadow" id="azure-cosmos-db-mongodb-api">
+        <header>
+          <form action=""><div class="form-group"><label for="uri" class="f-12">URl</label>  <input type="text" class="form-control py-1 border-secondary" id="exampleInputEmail1" aria-describedby="emailHelp"></div>
+          <div class="form-group"><label for="key" class="f-12">KEY</label>  <input type="text" class="form-control py-1 border-secondary" id="exampleInputEmail1" aria-describedby="emailHelp"></div>
+          <div class="form-group"><label for="frequency" class="f-12">Frequency</label>  <input type="text" class="form-control py-1 border-secondary" id="exampleInputEmail1" aria-describedby="emailHelp"></div>
+          </form>
+        </header>
+      </div>
+        <div class="dsbar py-3 shadow" id="azure-data-lake-delimited">
+           <header>
+          <div class="f-13 px-4 mb-3 ms-fontWeight-bold">Azure Blob-Delimited</div>
+          <form action="" class="px-4">
+
+  <div class="form-group">
+    <label for="exampleInputEmail1" class="f-12">Storage Account Name</label>
+    <input type="text" class="form-control py-1 border-secondary" id="exampleInputEmail1" aria-describedby="emailHelp">
+  </div>  <div class="form-group">
+    <label for="exampleInputEmail1" class="f-12">Storage Account Key</label>
+    <input type="text" class="form-control py-1 border-secondary" id="exampleInputEmail1" aria-describedby="emailHelp">
+  </div> <div class="form-group">
+    <label for="exampleInputEmail1" class="f-12">File Name</label>
+    <input type="text" class="form-control py-1 border-secondary" id="exampleInputEmail1" aria-describedby="emailHelp">
+  </div>
+      <div class="form-group">
+    <label for="exampleInputEmail1" class="f-12">Delimeter</label>
+    <input type="text" class="form-control py-1 border-secondary" id="exampleInputEmail1" aria-describedby="emailHelp">
+  </div>
+  <div class="form-group"><label for="filetype" class="f-12">File Type</label>  <input type="text" class="form-control py-1 border-secondary" id="exampleInputEmail1" aria-describedby="emailHelp"></div>
+  <div class="form-group"><label for="filepath" class="f-12">File Path</label>  <input type="text" class="form-control py-1 border-secondary" id="exampleInputEmail1" aria-describedby="emailHelp"></div>
+  <div class="form-group"><label for="Frequency" class="f-12">Frequency</label>  <input type="text" class="form-control py-1 border-secondary" id="exampleInputEmail1" aria-describedby="emailHelp"></div>
+</form></header>
+       <nav class="d-flex justify-content-between align-items-center px-4">
+          <button type="button" class="btn btn-primary py-1 px-2 f-12">Submit</button>
+          <button type="button" class="btn btn-light border py-1 px-2 f-12" onclick="canceldataset()">Cancel</button>
+        </nav>
+      </div>
+
+        <div class="dsbar py-3 shadow" id="azure-data-lake-Binary">
+           <header>
+          <div class="f-13 px-4 mb-3 ms-fontWeight-bold">Azure Blob-Delimited</div>
+          <form action="" class="px-4">
+
+  <div class="form-group">
+    <label for="exampleInputEmail1" class="f-12">Storage Account Name</label>
+    <input type="text" class="form-control py-1 border-secondary" id="exampleInputEmail1" aria-describedby="emailHelp">
+  </div>  <div class="form-group">
+    <label for="exampleInputEmail1" class="f-12">Storage Account Key</label>
+    <input type="text" class="form-control py-1 border-secondary" id="exampleInputEmail1" aria-describedby="emailHelp">
+  </div> <div class="form-group">
+    <label for="exampleInputEmail1" class="f-12">File Name</label>
+    <input type="text" class="form-control py-1 border-secondary" id="exampleInputEmail1" aria-describedby="emailHelp">
+  </div>
+      <div class="form-group">
+    <label for="exampleInputEmail1" class="f-12">Delimeter</label>
+    <input type="text" class="form-control py-1 border-secondary" id="exampleInputEmail1" aria-describedby="emailHelp">
+  </div>
+  <div class="form-group"><label for="filetype" class="f-12">File Type</label>  <input type="text" class="form-control py-1 border-secondary" id="exampleInputEmail1" aria-describedby="emailHelp"></div>
+  <div class="form-group"><label for="filepath" class="f-12">File Path</label>  <input type="text" class="form-control py-1 border-secondary" id="exampleInputEmail1" aria-describedby="emailHelp"></div>
+  <div class="form-group"><label for="Frequency" class="f-12">Frequency</label>  <input type="text" class="form-control py-1 border-secondary" id="exampleInputEmail1" aria-describedby="emailHelp"></div>
+</form></header>
+       <nav class="d-flex justify-content-between align-items-center px-4">
+          <button type="button" class="btn btn-primary py-1 px-2 f-12">Submit</button>
+          <button type="button" class="btn btn-light border py-1 px-2 f-12" onclick="canceldataset()">Cancel</button>
+        </nav>
+      </div>
+        <div class="dsbar py-3 shadow" id="azure-data-lake-JSON">
+           <header>
+          <div class="f-13 px-4 mb-3 ms-fontWeight-bold">Azure Blob-Delimited</div>
+          <form action="" class="px-4">
+
+  <div class="form-group">
+    <label for="exampleInputEmail1" class="f-12">Storage Account Name</label>
+    <input type="text" class="form-control py-1 border-secondary" id="exampleInputEmail1" aria-describedby="emailHelp">
+  </div>  <div class="form-group">
+    <label for="exampleInputEmail1" class="f-12">Storage Account Key</label>
+    <input type="text" class="form-control py-1 border-secondary" id="exampleInputEmail1" aria-describedby="emailHelp">
+  </div> <div class="form-group">
+    <label for="exampleInputEmail1" class="f-12">File Name</label>
+    <input type="text" class="form-control py-1 border-secondary" id="exampleInputEmail1" aria-describedby="emailHelp">
+  </div>
+      <div class="form-group">
+    <label for="exampleInputEmail1" class="f-12">Delimeter</label>
+    <input type="text" class="form-control py-1 border-secondary" id="exampleInputEmail1" aria-describedby="emailHelp">
+  </div>
+  <div class="form-group"><label for="filetype" class="f-12">File Type</label>  <input type="text" class="form-control py-1 border-secondary" id="exampleInputEmail1" aria-describedby="emailHelp"></div>
+  <div class="form-group"><label for="filepath" class="f-12">File Path</label>  <input type="text" class="form-control py-1 border-secondary" id="exampleInputEmail1" aria-describedby="emailHelp"></div>
+  <div class="form-group"><label for="Frequency" class="f-12">Frequency</label>  <input type="text" class="form-control py-1 border-secondary" id="exampleInputEmail1" aria-describedby="emailHelp"></div>
+</form></header>
+       <nav class="d-flex justify-content-between align-items-center px-4">
+          <button type="button" class="btn btn-primary py-1 px-2 f-12">Submit</button>
+          <button type="button" class="btn btn-light border py-1 px-2 f-12" onclick="canceldataset()">Cancel</button>
+        </nav>
+      </div>
+        <div class="dsbar py-3 shadow" id="azure-data-lake-ORC">
+           <header>
+          <div class="f-13 px-4 mb-3 ms-fontWeight-bold">Azure Blob-Delimited</div>
+          <form action="" class="px-4">
+
+  <div class="form-group">
+    <label for="exampleInputEmail1" class="f-12">Storage Account Name</label>
+    <input type="text" class="form-control py-1 border-secondary" id="exampleInputEmail1" aria-describedby="emailHelp">
+  </div>  <div class="form-group">
+    <label for="exampleInputEmail1" class="f-12">Storage Account Key</label>
+    <input type="text" class="form-control py-1 border-secondary" id="exampleInputEmail1" aria-describedby="emailHelp">
+  </div> <div class="form-group">
+    <label for="exampleInputEmail1" class="f-12">File Name</label>
+    <input type="text" class="form-control py-1 border-secondary" id="exampleInputEmail1" aria-describedby="emailHelp">
+  </div>
+      <div class="form-group">
+    <label for="exampleInputEmail1" class="f-12">Delimeter</label>
+    <input type="text" class="form-control py-1 border-secondary" id="exampleInputEmail1" aria-describedby="emailHelp">
+  </div>
+  <div class="form-group"><label for="filetype" class="f-12">File Type</label>  <input type="text" class="form-control py-1 border-secondary" id="exampleInputEmail1" aria-describedby="emailHelp"></div>
+  <div class="form-group"><label for="filepath" class="f-12">File Path</label>  <input type="text" class="form-control py-1 border-secondary" id="exampleInputEmail1" aria-describedby="emailHelp"></div>
+  <div class="form-group"><label for="Frequency" class="f-12">Frequency</label>  <input type="text" class="form-control py-1 border-secondary" id="exampleInputEmail1" aria-describedby="emailHelp"></div>
+</form></header>
+       <nav class="d-flex justify-content-between align-items-center px-4">
+          <button type="button" class="btn btn-primary py-1 px-2 f-12">Submit</button>
+          <button type="button" class="btn btn-light border py-1 px-2 f-12" onclick="canceldataset()">Cancel</button>
+        </nav>
+      </div>
+        <div class="dsbar py-3 shadow" id="azure-data-lake-parquet">
+           <header>
+          <div class="f-13 px-4 mb-3 ms-fontWeight-bold">Azure Blob-Delimited</div>
+          <form action="" class="px-4">
+
+  <div class="form-group">
+    <label for="exampleInputEmail1" class="f-12">Storage Account Name</label>
+    <input type="text" class="form-control py-1 border-secondary" id="exampleInputEmail1" aria-describedby="emailHelp">
+  </div>  <div class="form-group">
+    <label for="exampleInputEmail1" class="f-12">Storage Account Key</label>
+    <input type="text" class="form-control py-1 border-secondary" id="exampleInputEmail1" aria-describedby="emailHelp">
+  </div> <div class="form-group">
+    <label for="exampleInputEmail1" class="f-12">File Name</label>
+    <input type="text" class="form-control py-1 border-secondary" id="exampleInputEmail1" aria-describedby="emailHelp">
+  </div>
+      <div class="form-group">
+    <label for="exampleInputEmail1" class="f-12">Delimeter</label>
+    <input type="text" class="form-control py-1 border-secondary" id="exampleInputEmail1" aria-describedby="emailHelp">
+  </div>
+  <div class="form-group"><label for="filetype" class="f-12">File Type</label>  <input type="text" class="form-control py-1 border-secondary" id="exampleInputEmail1" aria-describedby="emailHelp"></div>
+  <div class="form-group"><label for="filepath" class="f-12">File Path</label>  <input type="text" class="form-control py-1 border-secondary" id="exampleInputEmail1" aria-describedby="emailHelp"></div>
+  <div class="form-group"><label for="Frequency" class="f-12">Frequency</label>  <input type="text" class="form-control py-1 border-secondary" id="exampleInputEmail1" aria-describedby="emailHelp"></div>
+</form></header>
+       <nav class="d-flex justify-content-between align-items-center px-4">
+          <button type="button" class="btn btn-primary py-1 px-2 f-12">Submit</button>
+          <button type="button" class="btn btn-light border py-1 px-2 f-12" onclick="canceldataset()">Cancel</button>
+        </nav>
+      </div>
+
+
+      <div class="innercontent" id="innercontent">
+        <nav class="nav bg-white border-bottom border-left-0 pipelineMenu f-13">
+          <a class="nav-link text-dark" href="#"
+            ><i class="fal fa-upload text-primary h6 mb-0 pr-2"></i
+            ><span>Publish all</span></a
+          >
+          <a class="nav-link text-dark" href="#"
+            ><i class="fal fa-check text-primary h6 mb-0 pr-2"></i
+            ><span>Validate all</span></a
+          >
+          <a class="nav-link text-dark" href="#"
+            ><i class="fal fa-redo text-primary h6 mb-0 pr-2"></i
+            ><span>Refresh</span></a
+          >
+          <a class="nav-link text-dark" href="#"
+            ><i class="fal fa-trash-alt text-primary h6 mb-0 pr-2"></i
+            ><span>Discard all</span></a
+          >
+        </nav>
+        <div class="factoryRes border" id="secsidebar">
+          <button
+            class="btn p-0 bg-white"
+            onclick="openSecsidebar()"
+            id="secsidebar1"
+          >
+            <i class="fal fa-angle-double-right"></i>
+          </button>
+          <div class="w-100 inner" id="secsidebar2">
+            <div class="d-flex justify-content-between px-3 pt-2 pb-2">
+              <div class="f-18">Factory Resources</div>
+              <div>
+                <button class="btn p-0 m-0 bg-white px-1">
+                  <i class="fal fa-angle-double-down"></i></button
+                ><button
+                  class="btn p-0 m-0 bg-white px-1"
+                  onclick="closeSecsidebar()"
+                >
+                  <i class="fal fa-angle-double-left"></i>
+                </button>
+              </div>
+            </div>
+            <div class="">
+              <div
+                class="d-flex justify-content-around align-items-center flex-row px-3"
+              >
+                <form action="">
+                  <input
+                    type="text"
+                    height="30px"
+                    class="p-1 pl-5 pr-5 border border-dark w-100"
+                    name=""
+                    id=""
+                    placeholder="Filter Resources by name"
+                    width="237px"
+                  />
+                </form>
+                <div class="dropdown">
+                  <button
+                    class="btn bg-white text-primary p-0 m-0 border-0"
+                    type="button"
+                    id="dropdownMenu3"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                    data-toggle="tooltip"
+                    data-placement="right"
+                    title="Action"
+                  >
+                    <i class="fal h4 mb-0 pt-1 fa-plus ml-2"></i>
+                  </button>
+                  <div
+                    class="dropdown-menu bg-white position-fixed border pt-2"
+                  >
+                    <a class="dropdown-item f-12 p-1 pr-1 px-3 py-2" href="#"
+                      ><i
+                        class="fal f-13 text-primary mr-2 fa-database fa-rotate-90"
+                      ></i
+                      >Pipeline</a
+                    >
+                    <a class="dropdown-item f-12 p-1 pr-1 px-3 py-2" href="#"
+                      ><i class="fal f-13 text-primary mr-2 fa-shapes"></i
+                      >Pipeline form Template</a
+                    >
+                    <a class="dropdown-item f-12 p-1 pr-1 px-3 py-2" href="#" onclick="opennewdataset()"
+                      ><i class="fal f-13 text-primary mr-2 fa-table"></i
+                      >Dataset</a
+                    >
+                    <a class="dropdown-item f-12 p-1 pr-1 px-3 py-2" href="#"
+                      ><i class="fal f-13 text-primary mr-2 fa-folder-tree"></i
+                      >Dataflow</a
+                    >
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item f-12 p-1 pr-1 px-3 py-2" href="#"
+                      ><i
+                        class="fal f-13 text-primary mr-2 fa-object-ungroup"
+                      ></i
+                      >Copy Data</a
+                    >
+                  </div>
+                </div>
+              </div>
+              <ul class="nav flex-column py-2">
+                <li
+                  class="nav-item border-bottom d-flex justify-content-between align-items-center edit_hover_class"
+                >
+                  <a
+                    class="nav-link text-dark ms-fontSize-14 ms-fontWeight-semibold"
+                    data-toggle="collapse"
+                    href="#pipeline"
+                    role="button"
+                    aria-expanded="false"
+                    aria-controls="pipeline"
+
+                    ><i class="fal fa-caret-right pr-2"></i>Pipeline</a
+                  ><a href="#" class="nav-link edit_hover_class"   data-toggle="dropdown"
+                          aria-haspopup="true"
+                          aria-expanded="false"
+                          data-toggle="tooltip" data-placement="right" title="Action"
+
+                    ><span class="">0</span
+                    ><i class="far f-13 fa-ellipsis-h"></i
+                  ></a>
+                   <div
+                          class="pipelinedropdown dropdown-menu bg-white border pt-2"
+                        >
+                          <a
+                            class="dropdown-item f-12 p-1 pr-1 px-3 py-2"
+                            href="#"
+                            onclick="opendataset()"
+                            ><i
+                              class="fal f-13 text-primary mr-2 fa-database fa-rotate-90"
+                            ></i
+                            >New PIpeline</a
+                          >
+                          <a
+                            class="dropdown-item f-12 p-1 pr-1 px-3 py-2"
+                            href="#"
+                            ><i
+                              class="fal f-13 text-primary mr-2 fa-server"
+                            ></i
+                            >Pipeline From Template</a
+                          >
+                          <a
+                            class="dropdown-item f-12 p-1 pr-1 px-3 py-2"
+                            href="#"
+                            ><i class="fal f-13 text-primary mr-2 fa-folder"></i
+                            >New Folder</a
+                            >
+                        </div>
+                </li>
+                <div class="collapse multi-collapse show" id="pipeline">
+                  <div class="card card-body py-1 px-0 shadow-none">
+                    <ul class="flex-column pl-0">
+                      <li
+                        class="nav-item d-flex justify-content-between align-items-center"
+                      >
+                        <a
+                          href="#"
+                          class="nav-link text-dark f-12 font-weight-normal"
+                          onclick="openpipeline1()"
+                          ><i
+                            class="fal fa-database text-primary fa-rotate-90 mr-2"
+                          ></i
+                          >AIMDM</a
+                        ><a
+                          href=""
+                          class="nav-link text-primary f-12 font-weight-bold"
+                          data-toggle="dropdown"
+                          aria-haspopup="true"
+                          aria-expanded="false"
+                          data-toggle="tooltip"
+                          data-placement="right"
+                          title="Action"
+                          ><i class="far fa-ellipsis-h"></i
+                        ></a>
+                        <div
+                          class="newpipelinedropdown dropdown-menu bg-white border pt-2"
+                        >
+                          <a
+                            class="dropdown-item f-12 p-1 pr-1 px-3 py-2"
+                            href="#"
+                            onclick="opendataset()"
+                            ><i
+                              class="fal f-13 text-primary mr-2 fa-location-arrow"
+                            ></i
+                            >Open</a
+                          >
+                          <div class="dropdown-divider"></div>
+                          <a
+                            class="dropdown-item f-12 p-1 pr-1 px-3 py-2"
+                            href="#"
+                            ><i
+                              class="fal f-13 text-primary mr-2 fa-tachometer-alt-fast"
+                            ></i
+                            >Monitor</a
+                          >
+                          <a
+                            class="dropdown-item f-12 p-1 pr-1 px-3 py-2"
+                            href="#"
+                            ><i class="fal f-13 text-primary mr-2 fa-copy"></i
+                            >Move to</a
+                          >
+                          <a
+                            class="dropdown-item f-12 p-1 pr-1 px-3 py-2"
+                            href="#"
+                            ><i
+                              class="fal f-13 text-primary mr-2 fa-arrow-to-bottom"
+                            ></i
+                            >Download Support Files</a
+                          >
+                          <a
+                            class="dropdown-item f-12 p-1 pr-1 px-3 py-2"
+                            href="#"
+                            ><i
+                              class="fal f-13 text-primary mr-2 fa-trash-alt"
+                            ></i
+                            >Delete</a
+                          >
+                        </div>
+                      </li>
+                      <li
+                        class="nav-item d-flex justify-content-between align-items-center"
+                      >
+                        <a
+                          href="#"
+                          class="nav-link text-dark f-12 font-weight-normal"
+                          onclick="openpipeline1()"
+                          ><i
+                            class="fal fa-database text-primary fa-rotate-90 mr-2"
+                          ></i
+                          >New Pipeline</a
+                        ><a
+                          href=""
+                          class="nav-link text-primary f-12 font-weight-bold"
+                          data-toggle="dropdown"
+                          aria-haspopup="true"
+                          aria-expanded="false"
+                          data-toggle="tooltip"
+                          data-placement="right"
+                          title="Action"
+                          ><i class="far fa-ellipsis-h"></i
+                        ></a>
+                        <div
+                          class="aimdmdropdown dropdown-menu bg-white border pt-2"
+                        >
+                          <a
+                            class="dropdown-item f-12 p-1 pr-1 px-3 py-2"
+                            href="#"
+                            onclick="opendataset()"
+                            ><i
+                              class="fal f-13 text-primary mr-2 fa-location-arrow"
+                            ></i
+                            >Open</a
+                          >
+                          <div class="dropdown-divider"></div>
+                          <a
+                            class="dropdown-item f-12 p-1 pr-1 px-3 py-2"
+                            href="#"
+                            ><i
+                              class="fal f-13 text-primary mr-2 fa-tachometer-alt-fast"
+                            ></i
+                            >Monitor</a
+                          >
+                          <a
+                            class="dropdown-item f-12 p-1 pr-1 px-3 py-2"
+                            href="#"
+                            ><i class="fal f-13 text-primary mr-2 fa-copy"></i
+                            >Move to</a
+                          >
+                          <a
+                            class="dropdown-item f-12 p-1 pr-1 px-3 py-2"
+                            href="#"
+                            ><i
+                              class="fal f-13 text-primary mr-2 fa-arrow-to-bottom"
+                            ></i
+                            >Download Support Files</a
+                          >
+                          <a
+                            class="dropdown-item f-12 p-1 pr-1 px-3 py-2"
+                            href="#"
+                            ><i
+                              class="fal f-13 text-primary mr-2 fa-trash-alt"
+                            ></i
+                            >Delete</a
+                          >
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <li
+                  class="nav-item border-bottom d-flex justify-content-between align-items-center edit_hover_class"
+                >
+                  <a
+                    class="nav-link text-dark ms-fontSize-14 ms-fontWeight-semibold"
+                    data-toggle="collapse"
+                    href="#Dataset"
+                    role="button"
+                    aria-expanded="false"
+                    aria-controls="Dataset"
+                    ><i class="fal fa-caret-right pr-2"></i>Dataset</a
+                  ><a
+                    href="#"
+                    class="nav-link edit_hover_class"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                    data-toggle="tooltip"
+                    data-placement="right"
+                    title="Action"
+                    ><span class="">0</span
+                    ><i class="far f-13 fa-ellipsis-h"></i
+                  ></a>
+                  <div
+                    class="datasetdropdown dropdown-menu bg-white border pt-2"
+                  >
+                    <a
+                      class="dropdown-item f-12 p-1 pr-1 px-3 py-2"
+                      href="#"
+                      onclick="opennewdataset()"
+                      ><i class="fal f-13 text-primary mr-2 fa-table"></i>New
+                      Dataset</a
+                    >
+                    <a class="dropdown-item f-12 p-1 pr-1 px-3 py-2" href="#"
+                      ><i class="fal f-13 text-primary mr-2 fa-folder-tree"></i
+                      >New Folder</a
+                    >
+                  </div>
+                </li>
+                 <div class="collapse multi-collapse hide" id="Dataset">
+                  <div class="card card-body py-1 px-0 shadow-none">
+                    <ul class="nav flex-column" id="test">
+
+                    </ul>
+                  </div>
+                </div>
+                <li
+                  class="nav-item border-bottom d-flex justify-content-between align-items-center edit_hover_class"
+                >
+                  <a
+                    class="nav-link text-dark ms-fontSize-14 ms-fontWeight-semibold"
+                    data-toggle="collapse"
+                    href="#Dataflow"
+                    role="button"
+                    aria-expanded="false"
+                    aria-controls="Dataflow"
+
+                    ><i class="fal fa-caret-right pr-2"></i>Dataflow</a
+                  ><a href="#" class="nav-link edit_hover_class"data-toggle="tooltip" data-placement="right" title="Action"
+                    ><span class="">0</span
+                    ><i class="far f-13 fa-ellipsis-h"></i
+                  ></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+        <div class="maincontent" id="maincontent">
+          <nav class="nav bg-white tabMenu">
+            <a draggable="true"
+              class="nav-link text-dark bg-white p-1 px-3 border ms-fontSize-16 ms-fontWeight-normal"
+              style="z-index: 100;"
+              href="#"
+              >AIMDM
+            </a>
+          </nav>
+          <div class="activities border border-right-0" id="thirdsidebar">
+            <button
+              class="btn p-0 bg-white"
+              onclick="openThirdsidebar()"
+              id="thirdsidebar1"
+            >
+              <i class="fal fa-angle-double-right"></i>
+            </button>
+            <div class="w-100 inner border-top" id="thirdsidebar2">
+              <div class="d-flex justify-content-between px-3 pt-2 pb-2">
+                <div class="f-18">Activities</div>
+                <div>
+                  <button class="btn p-0 m-0 bg-white px-1">
+                    <i class="fal fa-angle-double-down"></i></button
+                  ><button
+                    class="btn p-0 m-0 bg-white px-1"
+                    onclick="closeThirdsidebar()"
+                  >
+                    <i class="fal fa-angle-double-left"></i>
+                  </button>
+                </div>
+              </div>
+
+              <div class="px-3">
+                <div class="d-flex justify-content-between">
+                  <form action="">
+                    <input
+                      type="text"
+                      width="182px"
+                      height="26px"
+                      class="p-0 px-4 py-1 w-100"
+                      name=""
+                      id=""
+                      placeholder="Search activities"
+                    />
+                  </form>
+                </div>
+              </div>
+              <ul class="nav flex-column py-2">
+                <li class="nav-item">
+                  <a
+                    class="nav-link text-dark ms-fontSize-14 ms-fontWeight-semibold"
+                    data-toggle="collapse"
+                    href="#copydata"
+                    role="button"
+                    aria-expanded="false"
+                    aria-controls="copydata"
+                    ><i class="fal fa-caret-right pr-2"></i>Move & Transform</a
+                  >
+                  <div class="collapse multi-collapse" id="copydata">
+                    <div class="card card-body py-1 shadow-none">
+                      <ul class="nav flex-column moveandtransform">
+                      <li class="nav-item border my-1 dragme position-fixed" onmousedown="drag()">
+                          <a
+                            class="nav-link ms-fontSize-14 text-dark ms-fontWeight-regular py-1 px-2"
+                            href="#!"
+                            ><i class="far fa-database pr-2"></i>
+                            Copy Data<div class="float-right">
+                              <i class="fal fa-bars fa-rotate-90"></i></div
+                          ></a>
+                        </li>
+                      </ul>
+                      <ul class="nav flex-column moveandtransform">
+                        <li class="nav-item border my-1 dragme position-fixed">
+                          <a
+                            class="nav-link ms-fontSize-14 text-dark ms-fontWeight-regular py-1 px-2"
+                            href="#!"
+                            ><i class="far fa-retweet pr-2"></i>
+                            Data Flow<div class="float-right">
+                              <i class="fal fa-bars fa-rotate-90"></i></div
+                          ></a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </li>
+                <li class="nav-item">
+                  <a
+                    class="nav-link text-dark ms-fontSize-14 ms-fontWeight-semibold"
+                    data-toggle="collapse"
+                    href="#iteration"
+                    role="button"
+                    aria-expanded="false"
+                    aria-controls="iteration"
+                    ><i class="far fa-caret-right pr-2"></i>Iteration &
+                    Conditions</a
+                  >
+                  <div class="collapse multi-collapse" id="iteration">
+                    <div class="card card-body py-1 shadow-none">
+                      <ul class="nav flex-column moveandtransform">
+                        <li class="nav-item border my-1 dragme position-fixed">
+                          <a
+                            class="nav-link ms-fontSize-14 text-dark ms-fontWeight-regular py-1 px-2"
+                            href="#!"
+                            ><i class="far fa-filter pr-2"></i>Filter
+                            <div class="float-right">
+                              <i class="fal fa-bars fa-rotate-90"></i></div
+                          ></a>
+                        </li>
+                      </ul>
+                      <ul class="nav flex-column moveandtransform">
+                        <li class="nav-item border my-1 dragme position-fixed">
+                          <a
+                            class="nav-link ms-fontSize-14 text-dark ms-fontWeight-regular py-1 px-2"
+                            href="#!"
+                            ><i class="far fa-undo-alt pr-2"></i>ForEach
+                            <div class="float-right">
+                              <i class="fal fa-bars fa-rotate-90"></i></div
+                          ></a>
+                        </li>
+                      </ul>
+                      <ul class="nav flex-column moveandtransform">
+                        <li class="nav-item border my-1 dragme position-fixed">
+                          <a
+                            class="nav-link ms-fontSize-14 text-dark ms-fontWeight-regular py-1 px-2"
+                            href="#!"
+                            ><i class="far fa-send-back pr-2"></i>IfCondition
+                            <div class="float-right">
+                              <i class="fal fa-bars fa-rotate-90"></i></div
+                          ></a>
+                        </li>
+                      </ul>
+                      <ul class="nav flex-column moveandtransform">
+                        <li class="nav-item border my-1 dragme position-fixed">
+                          <a
+                            class="nav-link ms-fontSize-14 text-dark ms-fontWeight-regular py-1 px-2"
+                            href="#!"
+                            ><i class="far fa-retweet pr-2"></i>Switch
+                            <div class="float-right">
+                              <i class="fal fa-bars fa-rotate-90"></i></div
+                          ></a>
+                        </li>
+                      </ul>
+                      <ul class="nav flex-column moveandtransform">
+                        <li class="nav-item border my-1 dragme position-fixed">
+                          <a
+                            class="nav-link ms-fontSize-14 text-dark ms-fontWeight-regular py-1 px-2"
+                            href="#!"
+                            ><i class="far fa-retweet pr-2"></i>Until
+                            <div class="float-right">
+                              <i class="fal fa-bars fa-rotate-90"></i></div
+                          ></a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="canvasArea" id="innercontent2">
+            <nav class="nav bg-white canvasMenu border f-13">
+              <a class="nav-link text-dark" href="#"
+                ><i class="fal fa-server text-primary h6 mb-0 pr-2"></i
+                ><span>Save as template</span></a
+              >
+              <a class="nav-link text-dark" href="#"
+                ><i class="fal fa-check text-primary h6 mb-0 pr-2"></i
+                ><span>Validate</span></a
+              >
+              <a class="nav-link text-dark" href="#"
+                ><i class="fal fa-play text-primary h6 mb-0 pr-2"></i>Debug</a
+              >
+              <a class="nav-link text-dark f-13" href="#"
+                ><i class="fal fa-bolt text-primary h6 mb-0 pr-2"></i>Add
+                trigger</a
+              >
+              <a
+                class="nav-link text-dark ml-auto"
+                href="#"
+                id="prop1"
+                onclick="openprop()"
+                ><i class="fal fa-bars text-primary h6 mb-0 pr-2"></i>
+              </a>
+              <a
+                class="nav-link text-dark ml-auto"
+                href="#"
+                id="prop2"
+                onclick="closeprop()"
+                ><i class="fal fa-bars text-primary h6 mb-0 pr-2"></i>
+              </a>
+            </nav>
+
+            <div style="position: relative;">
+              <div
+                id="myDiagramDiv"
+                style="display: flex; flex-direction: column;flex-grow: 1; height: 900px; border: dashed 1px blue;"
+              ></div>
+
+              <ul id="contextMenu" class="menu nav flex-column">
+                <div class="px-3 py-1">Add activity on:</div>
+                <li
+                  id="cut"
+                  class="menu-item nav-item py-1"
+                  onclick="cxcommand(event)"
+                >
+                  <i class="fas f-10 text-success fa-square-full pr-1"></i>
+                  Success
+                </li>
+                <li
+                  id="copy"
+                  class="menu-item nav-item py-1"
+                  onclick="cxcommand(event)"
+                >
+                  <i class="fas f-10 text-danger fa-square-full pr-1"></i>
+                  Failure
+                </li>
+                <li
+                  id="paste"
+                  class="menu-item nav-item py-1"
+                  onclick="cxcommand(event)"
+                >
+                  <i class="fas f-10 text-secondary fa-square-full pr-1"></i>
+                  Skip
+                </li>
+                <li
+                  id="delete"
+                  class="menu-item nav-item py-1"
+                  onclick="cxcommand(event)"
+                >
+                  <i class="fas f-10 text-primary fa-square-full pr-1"></i>
+                  Completion
+                </li>
+                <li class="menu-item nav-item py-1">
+                  <i class="fas f-10 text-secondary fa-square-full pr-1"></i>
+                  Skip
+                </li>
+              </ul>
+            </div>
+
+            <!-- Bottom Menu -->
+            <div class="btmMenu bg-white border" id="btmmenu">
+              <ul
+                class="nav nav-tabs fluent-tabs border-bottom px-3 sticky-top bg-white"
+                id="myTab"
+                role="tablist"
+              >
+                <li class="nav-item pt-2">
+                  <a
+                    class="nav-link active"
+                    id="gerneral"
+                    data-toggle="tab"
+                    href="#general"
+                    role="tab"
+                    aria-controls="gerneral"
+                    aria-selected="true"
+                    >General</a
+                  >
+                </li>
+                <li class="nav-item pt-2">
+                  <a
+                    class="nav-link"
+                    id="profile-tab"
+                    data-toggle="tab"
+                    href="#profile"
+                    role="tab"
+                    aria-controls="profile"
+                    aria-selected="false"
+                    >Source</a
+                  >
+                </li>
+                <li class="nav-item pt-2">
+                  <a
+                    class="nav-link"
+                    id="contact-tab"
+                    data-toggle="tab"
+                    href="#contact"
+                    role="tab"
+                    aria-controls="contact"
+                    aria-selected="false"
+                    >User Properties</a
+                  >
+                </li>
+                <li class="nav-item pt-2">
+                  <a
+                    class="nav-link"
+                    id="contact-tab"
+                    href="#"
+                    onclick="openbtmmenu()"
+                    >open</a
+                  >
+                </li>
+                 <li class="nav-item pt-2">
+                  <a
+                    class="nav-link"
+                    id="contact-tab"
+                    href="#"
+                    onclick="openbtmmenu()"
+                    >open</a
+                  >
+                </li>
+              </ul>
+              <div class="tab-content m-2" id="myTabContent">
+                <div
+                  class="tab-pane p-3 fade show active"
+                  id="general"
+                  role="tabpanel"
+                  aria-labelledby="home-tab"
+                >
+                  <form>
+                    <div class="form-group row">
+                      <label
+                        for="staticEmail"
+                        class="col-sm-2 col-form-label f-13"
+                        >Name</label
+                      >
+                      <div class="col-sm-8">
+                        <input
+                          type="text"
+                          class="form-control-plaintext"
+                          id="Name"
+                          value="Copydata"
+                        />
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label
+                        for="staticEmail"
+                        class="col-sm-2 col-form-label f-13"
+                        >Desctiption</label
+                      >
+                      <div class="col-sm-8">
+                        <input
+                          type="text"
+                          class="form-control-plaintext"
+                          id="Name"
+                          value=""
+                        />
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label
+                        for="staticEmail"
+                        class="col-sm-2 col-form-label f-13"
+                        >Timeout</label
+                      >
+                      <div class="col-sm-8">
+                        <input
+                          type="text"
+                          class="form-control-plaintext"
+                          id="Name"
+                          value=""
+                        />
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label
+                        for="staticEmail"
+                        class="col-sm-2 col-form-label f-13"
+                        >Retry</label
+                      >
+                      <div class="col-sm-8">
+                        <input
+                          type="number"
+                          class="form-control-plaintext"
+                          id="Name"
+                          value=""
+                        />
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label
+                        for="staticEmail"
+                        class="col-sm-2 col-form-label f-13"
+                        >Retry Intervals</label
+                      >
+                      <div class="col-sm-8">
+                        <input
+                          type="number"
+                          class="form-control-plaintext"
+                          id="Name"
+                          value=""
+                        />
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label
+                        for="staticEmail"
+                        class="col-sm-2 col-form-label f-13"
+                        >Scheduled Pulled</label
+                      >
+                      <div class="col-sm-8">
+                        <input
+                          type="date"
+                          class="form-control-plaintext"
+                          id="Name"
+                          value=""
+                        />
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div
+                  class="tab-pane p-3 fade"
+                  id="profile"
+                  role="tabpanel"
+                  aria-labelledby="profile-tab"
+                >
+                  <form action="">
+                    <div class="form-group row">
+                      <label for="staticEmail" class="col-sm-3 col-form-label"
+                        >Select Dataset</label
+                      >
+                      <div class="col-sm-7">
+                        <select class="form-control form-control-sm">
+                          <option>Default select</option>
+                        </select>
+                      </div>
+                      <div class="col-sm-2 text-primary">
+                        <div onclick="opennewdataset()">
+                          <i class="fal fa-plus"></i> New
+                        </div>
+                        <div class="btn bg-white p-0 m-0 text-primary"></div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div
+                  class="tab-pane px-3 fade"
+                  id="contact"
+                  role="tabpanel"
+                  aria-labelledby="contact-tab"
+                >
+                  <div class="p-0">
+                    <!-- Basic Table -->
+                   <div class="row">
+                     <div class="col-6 ml-4"><button class="btn btn-light p-0 " id="newentity"><i class="fal fa-plus text-primary"></i> New</button>   |  <button class="btn btn-light p-0">
+                       <i class="fal fa-redo text-primary ml-2"></i
+            >   Auto generate
+                     </button></div>
+                    </div>
+                    <div class="row">
+                      <table class="table table-borderless">
+  <thead>
+    <tr>
+      <td scope="col">Name</td>
+      <td scope="col">Value</td>
+    </tr>
+
+  </thead>
+  <script>
+    $("#newentity").click(function () {
+    $("#entity").append('<tr><td><input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Name"></td><td><input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Value"></td></tr>');
+    });
+  </script>
+  <tbody id="entity">
+    <tr>
+      <td><input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Name"></td>
+      <td><input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Value"></td>
+    </tr>
+
+  </tbody>
+</table>
+                    </div>
+                    <!-- Basic Table -->
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="properties" id="properties">
+              <div class="border h-100 bg-white p-3">
+                <div class="ms-fontSize-16 ms-fontWeight-semibold">
+                  Properties
+                </div>
+                <ul
+                  class="nav nav-tabs fluent-tabs pt-4"
+                  id="myTab"
+                  role="tablist"
+                >
+                  <li class="nav-item">
+                    <a
+                      class="nav-link active f-13 pb-2 px-2"
+                      id="home-tab"
+                      data-toggle="tab"
+                      href="#home"
+                      role="tab"
+                      aria-controls="home"
+                      aria-selected="true"
+                      >Genreal</a
+                    >
+                  </li>
+                </ul>
+                <div class="tab-content p-0 mt-2 f-13" id="myTabContent">
+                  <div
+                    class="tab-pane fade show active"
+                    id="home"
+                    role="tabpanel"
+                    aria-labelledby="home-tab"
+                  >
+                   <form>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1" class="f-13 ms-fontWeight-semibold">Name</label>
+                    <input type="text" value="AIMDM" class="form-control rounded-0 p-1" id="exampleInputEmail1" aria-describedby="emailHelp">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1" class="f-13 ms-fontWeight-semibold">Description</label>
+                    <textarea class="form-control p-1 rounded-0 f-12" id="exampleFormControlTextarea1" rows="2"></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1" class="f-13 ms-fontWeight-semibold">Concurrency</label>
+                    <input type="number" placeholder="AIMDM" class="form-control rounded-0 p-1" id="exampleInputEmail1" aria-describedby="emailHelp">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1" class="f-13 ms-fontWeight-semibold">Annotations</label>
+                    <div  onclick="openpipeline1()" ><i class="fal fa-plus"></i> New</div>
+                                        <div class="btn bg-white p-0 m-0 text-primary">
+                  </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+      <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="./js/popper.min.js"></script>
+    <script type="text/javascript" src="./js/bootstrap.min.js"></script>
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="js/script.js"></script>
+    <script type="text/javascript" src="./js/script1.js"></script>
+    <script id="code" src="./js/datapull.js"></script>
+  </body>
+</html>

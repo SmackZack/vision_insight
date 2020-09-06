@@ -1,0 +1,214 @@
+<div class="main">
+  <div class="container px-5">
+    <div class="row align-items-center main1 px-5">
+      <div class="row shadow-lg rounded mainbody bg-white">
+        <div class="col d-flex justify-content-center align-items-center">
+          <img src="favicon.ico" alt="" height="400px" />
+        </div>
+        <div class="col d-flex justify-content-center align-items-center">
+          <!-- Material form grid -->
+          <form #postForm="ngForm" (ngSubmit)="onCreatePost(postForm.value)">
+            <!-- Grid row -->
+
+            <div class="row" id="part1">
+
+              <div class="col-lg-12">
+                <!-- Material input -->
+                <div class="md-form m-2">
+                  <input
+                    mdbInput
+                    type="text"
+                    id="username"
+                    required
+                    ngModel
+                    name="name"
+                    class="form-control"
+                    placeholder="Name"
+                  />
+                </div>
+              </div>
+              <div class="col-lg-12">
+                <!-- Material input -->
+                <div class="md-form m-2">
+                  <input
+                    mdbInput
+                    type="text"
+                    id="username"
+                    required
+                    ngModel
+                    name="username"
+                    class="form-control"
+                    placeholder="Username"
+                  />
+                </div>
+              </div>
+              <div class="col-lg-12">
+                <!-- Material input -->
+                <div class="md-form m-2">
+                  <input
+                    mdbInput
+                    type="email"
+                    id="username"
+                    required
+                    ngModel
+                    email
+                    name="email"
+                    class="form-control"
+                    placeholder="Email"
+                  />
+                </div>
+              </div>
+              <div class="col-6">
+                <!-- Material input -->
+                <div class="md-form m-2">
+                  <input
+                    mdbInput
+                    type="password"
+                    id="username"
+                    required
+                    ngModel
+                    name="password"
+                    class="form-control"
+                    placeholder="Password (at least 8 characters)"
+                  />
+                </div>
+              </div>
+
+              <div class="col-6">
+                <!-- Material input -->
+                <div class="md-form m-2">
+                  <input
+                    mdbInput
+                    type="password"
+                    id="username"
+                    required
+                    ngModel
+                    name="confirmpassword"
+                    class="form-control"
+                    placeholder="Confirm Password"
+                  />
+                </div>
+              </div>
+
+
+            </div>
+            <div class="row" id="part2">
+              <div class="col-lg-12">
+                <!-- Material input -->
+                <div class="md-form m-2">
+                  <input
+                    mdbInput
+                    type="text"
+                    id="username"
+                    required
+                    ngModel
+                    name="country"
+                    class="form-control"
+                    placeholder="Country"
+                  />
+                </div>
+              </div>
+              <div class="col-lg-12">
+                <!-- Material input -->
+                <div class="md-form m-2">
+                  <span
+                    class="input-group-text bg-transparent border-0 px-2 position-absolute"
+                    id="dialing-code"
+                  >
+                  </span>
+                  <input
+                    mdbInput
+                    type="tel"
+                    id="username"
+                    required
+                    ngModel
+                    name="adress"
+                    class="form-control"
+                    placeholder="Address"
+                  />
+                </div>
+              </div>
+              <div class="col-lg-12">
+                <!-- Material input -->
+                <div class="md-form m-2">
+                  <input
+                    mdbInput
+                    type="tel"
+                    id="username"
+                    required
+                    ngModel
+                    name="companyname"
+                    class="form-control"
+                    placeholder="Company Name"
+                  />
+                </div>
+              </div>
+
+
+              <div class="col-lg-12">
+                <!-- Material input -->
+                <div class="md-form m-2">
+                  <span
+                    class="input-group-text bg-transparent border-0 px-2 position-absolute"
+                    id="dialing-code">+91
+                    </span>
+                  <input
+                    mdbInput
+                    type="tel"
+                    id="username"
+                    required
+                    ngModel
+                    name="contact"
+                    class="form-control pl-5"
+                    placeholder="Contact"
+                  />
+                </div>
+              </div>
+              <div class="col-lg-12 px-3">
+                <!-- Material input -->
+                <div class="md-form m-0 mx-3 border-bottom mt-2">
+                  <select
+                    class="browser-default custom-select border-0 border-bottom"
+                    aria-placeholder="3434"
+                  >
+                    <option selected class="">I plan to start using AIMDM with</option>
+                    <option value="1">3 Months</option>
+                    <option value="2">6 Months</option>
+                    <option value="3">1 Year</option>
+                  </select>
+                </div>
+
+              </div>
+               <div class="col-lg-12">
+                  <div class="md-form m-2">
+                   <mdb-checkbox>Want to contact a sales representative</mdb-checkbox>
+                </div>
+               </div>
+              <div class="col-lg-12 d-flex justify-content-around">
+                <button class="btn btn-secondary" (click)=[reverseit()]>Back</button>
+                <button class="btn btn-primary" routerLink=" " >Register</button>
+              </div>
+            </div>
+            <div class="row" id="part3">
+              <div class="col-lg-12 text-center px-5">
+                <button
+                  class="btn btn-success shadow-sm"
+                  (click)="[changeit()]"
+                >
+                  Next
+                </button>
+              </div>
+              <div class="col-lg-12 pt-3 text-center">
+                Already hava an account? Login
+                <a href="#" routerLink="">here</a>
+              </div>
+            </div>
+
+            <!-- Grid row -->
+          </form>
+          <!-- Material form grid -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

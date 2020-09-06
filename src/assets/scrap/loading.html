@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Loading</title>
+    <style>
+        body {
+            margin: 0px;
+            background-color: rgba(0, 0, 0, 0.089);
+            height: 100vh;
+            width: 100vw;
+        }
+       .loading {
+            display: flex;
+            justify-content: center;
+            height: 100vh;
+            align-self: center;
+            align-items: center;
+       } 
+       .container {
+           background-color: white;
+            display: flex;
+            justify-content: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 20px;
+            align-self: center;
+            align-items: center;
+            padding: 70px 100px;
+            box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.192);
+       }
+      .loader {
+        box-sizing: border-box;
+        width: 40px;
+        height: 40px;
+        
+        margin-right: 20px;
+        border-radius: 50px;
+        border: solid blue 4px;
+        border-right: solid rgba(0, 0, 255, 0.76) 4px; 
+        border-bottom: solid lightblue 4px;
+        border-left: solid rgb(198, 253, 253) 4px;
+        display: inline-block;
+        animation:spin 1s linear reverse infinite;
+        transform: scale(1);
+      }
+      @keyframes spin {
+        0% {transform: rotate(0deg) scale(1);}
+        50% {transform: rotate(180deg) scale(1);}
+        100% {transform: rotate(360deg) scale(1);}
+      }
+    </style>
+  </head>
+  <body>
+    <div id="loading" class="loading">
+     <div class="container">
+          <div class="loader"></div>
+      Loading....
+     </div>
+    </div>
+  </body>
+</html>

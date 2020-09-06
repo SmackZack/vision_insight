@@ -1,0 +1,496 @@
+body {
+  font-size: 0.9em;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow: hidden;
+}
+/* First Sidenav */
+
+.username {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.box3-1 {
+  width: 800px;
+  height: 500px;
+}
+
+.ver-nav {
+  height: 36px;
+  padding: 0px 16px !important;
+}
+
+
+.ver-navbtn {
+  padding: 0.25em;
+  font-size: 14px;
+}
+
+.usertent {
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.cheading {
+  font-weight: 400;
+  font-size: 16px;
+  letter-spacing: 0.1px;
+}
+
+.sm1 svg,
+.sm2 svg {
+  fill: black;
+  width: 14px;
+  height: 12px;
+}
+
+.hamburger {
+  border-radius: 0px;
+  margin-right: 15px !important;
+}
+
+label {
+  color: #aaaaaa;
+  font-weight: 600;
+}
+.top {
+  text-align: center;
+  background-color: #4d80e4;
+  margin-bottom: 0px;
+  padding: 10px 0px;
+  color: white;
+  margin-top: 25px;
+}
+
+.bg-blue {
+  background-color: #4d80e4;
+}
+
+.bg-primary {
+  background-color: #007ad7 !important;
+}
+
+.content {
+  margin-left: 47px;
+  position: relative;
+  transition: 0.1s;
+}
+
+.sidenav {
+  background-color: #f9f9f9;
+  box-shadow: inset 0 0 8px 0 rgba(0, 0, 0, 0.2);
+  border: none;
+  height: 100vh;
+  width: 47px;
+  position: absolute;
+  z-index: 3;
+  left: 0;
+  transition: 0.1s;
+  overflow-x: hidden;
+}
+
+.topnav {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,.16); 
+
+}
+
+.sidenav .material-icons {
+  font-size: 30px;
+}
+
+.sidenav ul a {
+  vertical-align: middle;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  display: block;
+  transition: 0s;
+}
+
+.sidenav ul a:hover {
+  background-color: #d4e8f9;
+}
+
+.nav-item:hover {
+  background-color: #d4e8f9;
+}
+
+.h6 {
+  margin-bottom: 0px;
+}
+
+ul {
+  padding-inline-start: 0px;
+}
+
+.lab {
+  display: none;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.navbar {
+  position: sticky;
+  z-index: 2;
+}
+
+.navbar .bold {
+  font-weight: 500;
+}
+
+.toggleCls {
+  width: 180px;
+}
+
+.toggleCls1 {
+  margin-left: 134px;
+}
+
+.toggleCls2 {
+  margin-left: 180px;
+}
+
+.toggleCls3 span {
+  display: inline;
+}
+
+/* general body styles */
+
+.material-icons {
+  font-size: 20px;
+  vertical-align: middle;
+}
+/* bottom-nav */
+.bottom-sidenav {
+  height: 20px;
+  width: 100%;
+  position: fixed;
+  z-index: 0;
+  bottom: 0;
+  overflow: auto;
+}
+
+.bottom-sidenav .nav {
+  z-index: 4;
+}
+
+.toggleCls6 {
+  height: 400px;
+}
+
+.form-control {
+  height: calc(1em + 0.75rem + 2px);
+}
+
+.active {
+  color: black;
+  border-bottom: solid black 2px;
+}
+
+/* Content */
+
+#sec-sidenav {
+  height: 100vh;
+  width: 25px;
+  border-left: none;
+  border-right: none;
+  position: absolute;
+  z-index: 3;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+#secshow {
+  display: none;
+}
+
+.newpp svg {
+  fill: lightblue;
+  height: 24px;
+  width: 24px;
+}
+
+.sec-sidenav .nav-item {
+  font-size: 36px;
+}
+
+.secnavbtn svg {
+  margin-top: -5px;
+  cursor: pointer;
+  fill: black;
+  width: 10px;
+}
+
+.sec-sidenav ul a {
+  display: block;
+}
+
+.secsm1 svg {
+  fill: black;
+  width: 10px;
+  padding: 0px;
+}
+
+.ul {
+  padding-inline-start: 0px;
+}
+
+.sec-sidenav .lab {
+  display: none;
+}
+
+.toggleCls4 {
+  width: 300px;
+}
+
+.box2 {
+  margin-left: 25px;
+}
+
+.box2-exp {
+  margin-left: 300px;
+}
+
+/* Left side menu */
+
+.lmenu {
+  background: white;
+  height: 100vh;
+  width: 0px;
+  position: absolute;
+  z-index: 4;
+  right: 0px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.lmenu-exp {
+  width: 400px;
+  right: 0px;
+}
+
+.lmenu-cont {
+  width: 0px;
+}
+
+/* box3 */
+#canvas-wrap {
+  position: relative;
+  border: solid 1px grey;
+  overflow: scroll;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+#canvas-wrap canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+}
+
+/* Canvas */
+.w-180 {
+  width: 180px;
+}
+
+/* search bar */
+
+::placeholder {
+  font-style: italic;
+}
+
+/* third side nav activities */
+
+.third-sidenav {
+  height: 100vh;
+  width: 25px;
+  position: absolute;
+  z-index: 3;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.third-sidenav .nav-item:hover {
+  background-color: white;
+}
+
+.third-sidenav ul a {
+  display: block;
+}
+
+#thirdshow {
+  display: none;
+}
+
+.toggleCls5 {
+  width: 200px;
+}
+
+.box3 {
+  position: relative;
+  height: 100vh;
+  margin-left: 25px;
+}
+
+.box3-exp {
+  margin-left: 200px;
+}
+
+.sources svg {
+  fill: black;
+  width: 25px;
+  height: 25px;
+}
+
+#btm-form {
+  width: initial;
+  width: 100%;
+  height: 0px;
+  position: absolute;
+  left: 0%;
+  bottom: 0px;
+  background-color: white;
+  overflow: scroll;
+  transition: 0.3s;
+  z-index: 10000;
+}
+
+#btm-form1-contlg {
+  display: none;
+}
+
+.btm-form .expand svg {
+  width: 20px;
+  height: 20px;
+  fill: black;
+}
+
+.active {
+  border-bottom: none;
+}
+
+/* Data Box */
+
+.databox {
+  background-color: rgb(223, 213, 213);
+  width: 130px;
+  height: 90px;
+  transition: 0.1s;
+  z-index: 60;
+}
+
+.databox .material-icons {
+  font-size: 20px;
+}
+
+.btm-logo {
+  position: fixed;
+  bottom: 0px;
+  right: 10px;
+   filter: drop-shadow(0px 5px 5px #666666);
+}
+
+.container-fluid {
+  position: relative;
+}
+
+.hr-svg {
+  position: absolute;
+  top: 75px;
+  left: 75px;
+  z-index: -1000;
+}
+
+.col-2,
+.col {
+  position: relative;
+}
+
+.row {
+  z-index: -2222;
+}
+
+.col-2 {
+  z-index: 0;
+}
+
+.vr-svg1 {
+  position: absolute;
+  left: 85px;
+  z-index: -100;
+}
+
+.vr-svg2 {
+  position: absolute;
+  left: 106px;
+  z-index: -2;
+}
+
+.lmenu-btn .material-icons {
+  font-size: 20px;
+  vertical-align: middle;
+  padding-top: 4px;
+}
+
+.pointing {
+  cursor: pointer;
+}
+
+.icon svg {
+  fill: white;
+
+  width: 16px;
+}
+
+.tsearch svg {
+  top: 20%;
+  left: 7%;
+  position: absolute;
+  fill: lightblue;
+  width: 16px;
+}
+
+.nav-icon:hover {
+  background-color: #1963a2;
+}
+
+.dataselect {
+  position: fixed;
+  background-color: white;
+  top: 0em;
+  right: 0em;
+  width: 632px;
+  margin-top: 40px;
+  height: 100%;
+  z-index: 10000;
+  transition: ease-in 0.1s;
+}
+
+.copydata {
+  z-index: 100 !important;
+}
+
+.dataselect .card{ 
+  width: 200px;
+}
+
+.f-600 {
+  font-weight: 600;
+  font-size: 1.1em;
+}
+
+.box4 {
+  height: 170px;
+  width: 170px;
+}
+
+.datasetList {
+  height: 330px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}

@@ -1,0 +1,73 @@
+<div class="main">
+  <div class="container px-5">
+    <div class="row align-items-center main1 px-5">
+      <div class="row shadow-lg rounded white">
+        <div class="col d-flex justify-content-center align-items-center">
+          <img src="favicon.ico" alt="" height="400px" />
+        </div>
+        <div class="col d-flex justify-content-center align-items-center">
+          <!-- Material form grid -->
+          <form #postForm="ngForm" (ngSubmit)="onCreatePost(postForm.value)">
+            <!-- Grid row -->
+
+            <div class="row py-5">
+              <!-- Grid column -->
+              <div class="col-12">
+                <!-- Material input -->
+                <div class="md-form m-2">
+                  <input
+                    mdbInput
+                    type="text"
+                    id="username"
+                    required
+                    ngModel
+                    name="username"
+                    class="form-control"
+                    placeholder="Username"
+                  />
+                </div>
+              </div>
+              <div class="col-12">
+                <!-- Material input -->
+                <div class="md-form m-2">
+                  <input
+                    mdbInput
+                    type="password"
+                    id="password"
+                    required
+                    ngModel
+                    name="password"
+                    class="form-control"
+                    placeholder="Password"
+                  />
+                </div>
+              </div>
+              <div class="col-6 pl-4">
+                <!-- Material unchecked -->
+                <mdb-checkbox>Keep me Signed in</mdb-checkbox>
+              </div>
+              <div class="col-6 text-right pr-4">
+                <a href="#" routerLink="forgetpassword">Forget Password?</a>
+              </div>
+
+              <div class="col-12 text-center px-5">
+                <button
+                  class="btn btn-success"
+                  type="submit"
+                  [disabled]="!postForm.valid"
+                >
+                  Login
+                </button>
+              </div>
+              <div class="col-12 pt-3 text-center">
+                Create your Account <a href="#" routerLink="register">here</a>
+              </div>
+            </div>
+            <!-- Grid row -->
+          </form>
+          <!-- Material form grid -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

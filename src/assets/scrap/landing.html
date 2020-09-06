@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link 
+    href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <script src="js/go.js"></script>
+    <link rel="stylesheet" href="css/landing.css" />
+    <link rel="stylesheet" href="css/jquery-ui.min.css" />
+    <script src="js/jquery-ui.min.js"></script>
+    <title>Vision Insight</title>
+  </head>
+  <body onload="init()">
+    <nav
+      class="nav d-flex justify-content-between bg-primary text-black p-0 overflow-hidden topnav"
+      style="height: 40px;"
+    >
+        <ul class="nav">
+          <div class="nav-link text-white ">
+            <span class="px-2 cheading">Vision Insight</span>
+          </div>
+        </ul>
+      <ul class="nav ml-5">
+        <li class="class-item d-flex align-items-center tsearch">
+          <div class="position-relative">
+            <span class=""
+              ><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="height:14px;">
+                <path
+                  d="M508.5 468.9L387.1 347.5c-2.3-2.3-5.3-3.5-8.5-3.5h-13.2c31.5-36.5 50.6-84 50.6-136C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c52 0 99.5-19.1 136-50.6v13.2c0 3.2 1.3 6.2 3.5 8.5l121.4 121.4c4.7 4.7 12.3 4.7 17 0l22.6-22.6c4.7-4.7 4.7-12.3 0-17zM208 368c-88.4 0-160-71.6-160-160S119.6 48 208 48s160 71.6 160 160-71.6 160-160 160z"
+                />
+              </svg>
+            </span>
+            <input
+              id="search"
+              type="text"
+              class=" form-control rounded-0 border-0 btn-block pl-5"
+              style="height: 25px; width: 400px; color:darkblue; font-size: 12px; background-color: azure;"
+              placeholder="Search Resources"
+            />
+          </div>
+        </li>
+      </ul>
+      <ul class="nav">
+        <li class="p-1 px-2 pointing nav-icon">
+          <div class="nav-link p-1 text-white icon" onclick="toggleupdate()">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M568 32h-16c-4.42 0-8 3.58-8 8v19.33L32 179.8V168c0-4.42-3.58-8-8-8H8c-4.42 0-8 3.58-8 8v176c0 4.42 3.58 8 8 8h16c4.42 0 8-3.58 8-8v-11.8l130.58 30.72c-1.56 6.8-2.58 13.8-2.58 21.07 0 53.02 42.98 96 96 96 45.13 0 82.45-31.3 92.64-73.29L544 452.67V472c0 4.42 3.58 8 8 8h16c4.42 0 8-3.58 8-8V40c0-4.42-3.58-8-8-8zM256 448c-35.29 0-64-28.71-64-64 0-4.75.72-9.31 1.76-13.74l124.13 29.21C310.92 427.27 285.93 448 256 448zM32 299.33v-86.66L544 92.2v327.6L32 299.33z"/></svg>
+          </div>
+        </li>
+        <li class="p-1 px-2 pointing nav-icon">
+          <div class="nav-link p-1 text-white icon" onclick="toggleedit()">
+           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M54.027 327.713C40.129 307.242 32 282.553 32 256c0-70.579 57.421-128 128-128h160v63.969c0 29.239 36.192 43.177 55.785 21.407l72-79.968c10.952-12.169 10.953-30.644 0-42.814l-72-79.974C356.226-11.114 320 2.738 320 32.026V96H160C71.775 96 0 167.775 0 256c0 33.913 10.612 65.391 28.683 91.299 4.427 6.348 13.606 6.936 18.785 1.185l5.488-6.096c3.667-4.073 4.149-10.14 1.071-14.675zM352 32l72 80-72 80V32zm131.317 132.701c-4.427-6.348-13.606-6.936-18.785-1.185l-5.488 6.096c-3.667 4.073-4.149 10.14-1.071 14.675C471.871 204.758 480 229.447 480 256c0 70.579-57.421 128-128 128H192v-63.969c0-29.239-36.192-43.177-55.785-21.407l-72 79.969c-10.952 12.169-10.953 30.644 0 42.814l72 79.974C155.774 523.113 192 509.264 192 479.974V416h160c88.225 0 160-71.775 160-160 0-33.913-10.612-65.391-28.683-91.299zM160 480l-72-80 72-80v160zm69.495-177.007c0-6.444 3.401-9.847 9.847-9.847h17.365v-53.348c0-4.834.179-9.847.179-9.847h-.359s-1.79 3.939-3.938 5.729l-1.611 1.432c-4.655 4.298-9.489 4.117-13.786-.537l-4.654-5.013c-4.475-4.654-4.297-9.487.358-13.963l22.2-20.767c3.759-3.401 7.161-4.833 12.173-4.833h10.205c6.444 0 9.846 3.4 9.846 9.846v91.301h17.544c6.444 0 9.847 3.402 9.847 9.847v7.162c0 6.443-3.402 9.846-9.847 9.846h-65.522c-6.445 0-9.847-3.402-9.847-9.846v-7.162z"/></svg>
+          </div>
+        </li>
+
+        <li class="p-1 px-2 pointing nav-icon">
+          <div
+            class="nav-link p-1 text-white icon"
+            onclick="togglenotification()"
+          >
+           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M224 480c-17.66 0-32-14.38-32-32.03h-32c0 35.31 28.72 64.03 64 64.03s64-28.72 64-64.03h-32c0 17.65-14.34 32.03-32 32.03zm209.38-145.19c-27.96-26.62-49.34-54.48-49.34-148.91 0-79.59-63.39-144.5-144.04-152.35V16c0-8.84-7.16-16-16-16s-16 7.16-16 16v17.56C127.35 41.41 63.96 106.31 63.96 185.9c0 94.42-21.39 122.29-49.35 148.91-13.97 13.3-18.38 33.41-11.25 51.23C10.64 404.24 28.16 416 48 416h352c19.84 0 37.36-11.77 44.64-29.97 7.13-17.82 2.71-37.92-11.26-51.22zM400 384H48c-14.23 0-21.34-16.47-11.32-26.01 34.86-33.19 59.28-70.34 59.28-172.08C95.96 118.53 153.23 64 224 64c70.76 0 128.04 54.52 128.04 121.9 0 101.35 24.21 138.7 59.28 172.08C421.38 367.57 414.17 384 400 384z"/></svg>
+          </div>
+        </li>
+        <li class="p-1 px-2 pointing nav-icon">
+          <div class="nav-link p-1 text-white icon" onclick="togglefeedback()">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm0 464c-119.1 0-216-96.9-216-216S128.9 40 248 40s216 96.9 216 216-96.9 216-216 216zm90.2-146.2C315.8 352.6 282.9 368 248 368s-67.8-15.4-90.2-42.2c-5.7-6.8-15.8-7.7-22.5-2-6.8 5.7-7.7 15.7-2 22.5C161.7 380.4 203.6 400 248 400s86.3-19.6 114.8-53.8c5.7-6.8 4.8-16.9-2-22.5-6.8-5.6-16.9-4.7-22.6 2.1zM168 240c17.7 0 32-14.3 32-32s-14.3-32-32-32-32 14.3-32 32 14.3 32 32 32zm160 0c17.7 0 32-14.3 32-32s-14.3-32-32-32-32 14.3-32 32 14.3 32 32 32z"/></svg>
+          </div>
+        </li>
+        <li class="p-1 px-2 pointing nav-icon">
+          <div class="nav-link p-1 text-white icon" onclick="togglehelp()">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 340c-15.464 0-28 12.536-28 28s12.536 28 28 28 28-12.536 28-28-12.536-28-28-28zm7.67-24h-16c-6.627 0-12-5.373-12-12v-.381c0-70.343 77.44-63.619 77.44-107.408 0-20.016-17.761-40.211-57.44-40.211-29.144 0-44.265 9.649-59.211 28.692-3.908 4.98-11.054 5.995-16.248 2.376l-13.134-9.15c-5.625-3.919-6.86-11.771-2.645-17.177C185.658 133.514 210.842 116 255.67 116c52.32 0 97.44 29.751 97.44 80.211 0 67.414-77.44 63.849-77.44 107.408V304c0 6.627-5.373 12-12 12zM256 40c118.621 0 216 96.075 216 216 0 119.291-96.61 216-216 216-119.244 0-216-96.562-216-216 0-119.203 96.602-216 216-216m0-32C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8z"/></svg>
+          </div>
+        </li>
+        <li class="h6 text-white font-weight-lighter pl-4 pointing nav-icon">
+          <div class="username pt-1">
+            someone@gmail.com<br /><small class="text-right usertent"
+              >DEFAULT CATEGORY</small
+            >
+          </div>
+        </li>
+        <li class="nav-item">
+          <span class="profile"
+            ><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+              <path
+                d="M313.6 304c-28.7 0-42.5 16-89.6 16-47.1 0-60.8-16-89.6-16C60.2 304 0 364.2 0 438.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-25.6c0-74.2-60.2-134.4-134.4-134.4zM400 464H48v-25.6c0-47.6 38.8-86.4 86.4-86.4 14.6 0 38.3 16 89.6 16 51.7 0 74.9-16 89.6-16 47.6 0 86.4 38.8 86.4 86.4V464zM224 288c79.5 0 144-64.5 144-144S303.5 0 224 0 80 64.5 80 144s64.5 144 144 144zm0-240c52.9 0 96 43.1 96 96s-43.1 96-96 96-96-43.1-96-96 43.1-96 96-96z"
+              />
+            </svg>
+          </span>
+        </li>
+      </ul>
+    </nav>
+    <!-- right side menu -->
+    <div class="shadow-lg">
+      <div class="lmenu feedback-mainmenu border bg-danger">
+        <div class="p-3">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus est, a
+          voluptates consequatur minima delectus ratione, quas aliquam ipsa
+          cupiditate cum neque eum dolorum, aut officiis eaque enim laborum
+          eius!
+        </div>
+      </div>
+      <div class="lmenu notifications-mainmenu border bg-primary">
+        <div class="p-3">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed quam qui
+          architecto quidem ad placeat, vel tenetur ipsam suscipit assumenda
+          consequatur odit quia incidunt totam excepturi tempora! Placeat,
+          tempore ad.
+        </div>
+      </div>
+      <div class="lmenu datafact-mainmenu border bg-secondary">
+        <div class="p-3">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus in
+          illo error ratione quidem consectetur libero incidunt nihil maxime
+          sunt. Repellendus doloremque ad harum eaque iure expedita quo itaque
+          consequuntur? Lorem, ipsum dolor sit amet consectetur adipisicing
+          elit. Necessitatibus, dolorum? Voluptatem, nisi. Minus ratione optio
+          molestiae quidem iure est sunt perspiciatis, fugiat nulla facere nihil
+          atque modi recusandae quis totam.
+        </div>
+      </div>
+      <div class="lmenu updates-mainmenu border bg-warning">
+        <div class="p-3">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia omnis
+          veritatis neque mollitia commodi dolore, quia, obcaecati reprehenderit
+          tempore consequatur alias ullam praesentium ipsa nulla? Ipsum,
+          voluptas. Quam, sed amet!
+        </div>
+      </div>
+    </div>
+    <!-- right side menu -->
+
+    <div class="header">
+      <div id="mySidenav" class="sidenav mainmenu bg-light border-right">
+        <ul class="label">
+          <div
+            class="navbar-toggler pl-4 py-0 pr-1 hamburger"
+            type="button"
+            data-toggle="collapse tooltip"
+            data-placement="bottom"
+            title="Open the Side Menu"
+            style="cursor: pointer;"
+            onclick="toggleClass()"
+          >
+            <span class="sm1" 
+              ><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M34.5 36.5l211.1 211c4.7 4.7 4.7 12.3 0 17l-211.1 211c-4.7 4.7-12.3 4.7-17 0l-7.1-7.1c-4.7-4.7-4.7-12.3 0-17L205.9 256 10.5 60.5c-4.7-4.7-4.7-12.3 0-17l7.1-7.1c4.6-4.6 12.2-4.6 16.9.1zm111 0l-7.1 7.1c-4.7 4.7-4.7 12.3 0 17L333.9 256 138.5 451.5c-4.7 4.7-4.7 12.3 0 17l7.1 7.1c4.7 4.7 12.3 4.7 17 0l211.1-211c4.7-4.7 4.7-12.3 0-17l-211.1-211c-4.8-4.8-12.4-4.8-17.1-.1z"/></svg></span
+            ><span class="sm2 d-none"
+              ><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M349.5 475.5l-211.1-211c-4.7-4.7-4.7-12.3 0-17l211.1-211c4.7-4.7 12.3-4.7 17 0l7.1 7.1c4.7 4.7 4.7 12.3 0 17L178.1 256l195.5 195.5c4.7 4.7 4.7 12.3 0 17l-7.1 7.1c-4.7 4.6-12.3 4.6-17-.1zm-111 0l7.1-7.1c4.7-4.7 4.7-12.3 0-17L50.1 256 245.5 60.5c4.7-4.7 4.7-12.3 0-17l-7.1-7.1c-4.7-4.7-12.3-4.7-17 0l-211.1 211c-4.7 4.7-4.7 12.3 0 17l211.1 211c4.8 4.8 12.4 4.8 17.1.1z"/></svg>
+            </span>
+          </div>
+          <a href="" class="text-dark px-2 py-2 mt-2"
+            ><span class="material-icons text-primary">
+              home
+            </span>
+            <span class="lab">Data Factory</span></a
+          >
+          <a href="" class="text-dark px-2 py-2"
+            ><span class="material-icons text-primary">
+              create
+            </span>
+            <span class="lab">Author</span></a
+          >
+        </ul>
+      </div>
+
+      <div class="content">
+        <ul class="nav justify-content-star border-bottom p-1 ver-nav">
+          <!-- <li class="nav-item">
+            <a class="nav-link text-dark p-1 px-2" href="#"
+              ><span class="material-icons text-primary"> analytics </span>Data
+              Factory</a
+            >
+          </li> -->
+          <li class="nav-item ver-navbtn">
+            <a
+              class="nav-link text-dark p-1 px-2 disabled"
+              href="#"
+              tabindex="-1"
+              aria-disabled="true"
+              ><span class="material-icons text-primary mr-1"> publish </span
+              >Publish All</a
+            >
+          </li>
+          <li class="nav-item ver-navbtn">
+            <a class="nav-link text-dark p-1 px-2" href="#"
+              ><span class="material-icons text-primary mr-1"> done </span
+              >Validate All</a
+            >
+          </li>
+          <li class="nav-item ver-navbtn">
+            <a class="nav-link text-dark p-1 px-2" href="#"
+              ><span class="material-icons text-primary mr-1"> refresh </span
+              >Refersh</a
+            >
+          </li>
+          <li class="nav-item ver-navbtn">
+            <a
+              class="nav-link text-dark p-1 px-2 disabled"
+              href="#"
+              tabindex="-1"
+              aria-disabled="true"
+              ><span class="material-icons text-primary mr-1"> delete </span
+              >Discard All</a
+            >
+          </li>
+        </ul>
+        <div class="sec-mainmenu" id="sec-sidenav">
+          <div
+            href=""
+            onclick="opensecnav()"
+            class="secnavbtn px-2"
+            id="secnavbtn"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="pt-3">
+              <path
+                d="M34.5 36.5l211.1 211c4.7 4.7 4.7 12.3 0 17l-211.1 211c-4.7 4.7-12.3 4.7-17 0l-7.1-7.1c-4.7-4.7-4.7-12.3 0-17L205.9 256 10.5 60.5c-4.7-4.7-4.7-12.3 0-17l7.1-7.1c4.6-4.6 12.2-4.6 16.9.1zm111 0l-7.1 7.1c-4.7 4.7-4.7 12.3 0 17L333.9 256 138.5 451.5c-4.7 4.7-4.7 12.3 0 17l7.1 7.1c4.7 4.7 12.3 4.7 17 0l211.1-211c4.7-4.7 4.7-12.3 0-17l-211.1-211c-4.8-4.8-12.4-4.8-17.1-.1z"
+              />
+            </svg>
+          </div>
+          <div id="secshow" class="">
+            <div class="mb-3 d-flex justify-content-between px-3 pt-2">
+              <span class="h5 mb-0"> Factory Resources</span>
+              <div>
+                <a onclick="" class="btn border-0 p-0 secsm1 mr-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                    <path
+                      d="M443.5 98.5l-211 211.1c-4.7 4.7-12.3 4.7-17 0L4.5 98.5c-4.7-4.7-4.7-12.3 0-17l7.1-7.1c4.7-4.7 12.3-4.7 17 0L224 269.9 419.5 74.5c4.7-4.7 12.3-4.7 17 0l7.1 7.1c4.6 4.6 4.6 12.2-.1 16.9zm0 111l-7.1-7.1c-4.7-4.7-12.3-4.7-17 0L224 397.9 28.5 202.5c-4.7-4.7-12.3-4.7-17 0l-7.1 7.1c-4.7 4.7-4.7 12.3 0 17l211 211.1c4.7 4.7 12.3 4.7 17 0l211-211.1c4.8-4.8 4.8-12.4.1-17.1z"
+                    />
+                  </svg>
+                </a>
+                <a onclick="closesecnav()" class="btn border-0 p-0 secsm1">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                    <path
+                      d="M349.5 475.5l-211.1-211c-4.7-4.7-4.7-12.3 0-17l211.1-211c4.7-4.7 12.3-4.7 17 0l7.1 7.1c4.7 4.7 4.7 12.3 0 17L178.1 256l195.5 195.5c4.7 4.7 4.7 12.3 0 17l-7.1 7.1c-4.7 4.6-12.3 4.6-17-.1zm-111 0l7.1-7.1c4.7-4.7 4.7-12.3 0-17L50.1 256 245.5 60.5c4.7-4.7 4.7-12.3 0-17l-7.1-7.1c-4.7-4.7-12.3-4.7-17 0l-211.1 211c-4.7 4.7-4.7 12.3 0 17l211.1 211c4.8 4.8 12.4 4.8 17.1.1z"
+                    />
+                  </svg>
+                </a>
+              </div>
+            </div>
+            <div class="border-primary rounded mx-3">
+              <div class="row no-gutters">
+                <div class="col-10">
+                  <input
+                    type="text"
+                    placeholder="Search Resources"
+                    class="border border-dark"
+                    style="width: 233px;"
+                  />
+                </div>
+                <div class="col-1">
+                  <a class="btn p-0 newpp p-0 ml-3"
+                    ><svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 384 512"
+                    >
+                      <path
+                        d="M376 232H216V72c0-4.42-3.58-8-8-8h-32c-4.42 0-8 3.58-8 8v160H8c-4.42 0-8 3.58-8 8v32c0 4.42 3.58 8 8 8h160v160c0 4.42 3.58 8 8 8h32c4.42 0 8-3.58 8-8V280h160c4.42 0 8-3.58 8-8v-32c0-4.42-3.58-8-8-8z"
+                      />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+              <div class="col-1"></div>
+            </div>
+            <ul class="nav flex-column pt-3">
+              <li class="nav-item font-weight-normal">
+                <a
+                  class="nav-link p-2 border-bottom text-dark p-0 d-flex justify-content-between pr-3"
+                  data-toggle="collapse"
+                  href="#pipeldataset"
+                  role="button"
+                  aria-expanded="false"
+                  aria-controls="pipeldataset"
+                >
+                  <div>
+                    <span class="material-icons"> arrow_right </span>Pipelines
+                  </div>
+                  <div>0</div>
+                </a>
+              </li>
+              <div class="collapse px-4" id="pipeldataset">
+                <ul class="list-group-item border-0">
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                </ul>
+              </div>
+              <li class="nav-item  font-weight-normal">
+                <a
+                  class="nav-link p-2 border-bottom text-dark p-0 d-flex justify-content-between pr-3"
+                  data-toggle="collapse"
+                  href="#dataset"
+                  role="button"
+                  aria-expanded="false"
+                  aria-controls="dataset"
+                >
+                  <div>
+                    <span class="material-icons"> arrow_right </span>Data Set
+                  </div>
+                  <div>0</div>
+                </a>
+              </li>
+              <div class="collapse px-4" id="dataset">
+                <ul class="list-group-item border-0">
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                </ul>
+              </div>
+            </ul>
+          </div>
+        </div>
+
+        <div class="box2" id="box2">
+        <nav class="border d-flex">
+                    <ul class="nav">
+          <li class="nav-item">
+            <a class="nav-link " href="#">Save as Template</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Load</a>
+          </li>
+          
+          </ul>
+          <ul class="nav ml-auto">
+            <li class="nav-item"><a href="" class="nav-link"></a></li>
+          </ul>
+        </nav>
+          <div class="third-sidenav third-mainmenu border border-top-0 border-bottom-0" id="third-sidenav">
+            <div
+              href=""
+              onclick="openthirdnav()"
+              class="secnavbtn px-2"
+              id="thirdnavbtn"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="pt-3">
+                <path
+                  d="M34.5 36.5l211.1 211c4.7 4.7 4.7 12.3 0 17l-211.1 211c-4.7 4.7-12.3 4.7-17 0l-7.1-7.1c-4.7-4.7-4.7-12.3 0-17L205.9 256 10.5 60.5c-4.7-4.7-4.7-12.3 0-17l7.1-7.1c4.6-4.6 12.2-4.6 16.9.1zm111 0l-7.1 7.1c-4.7 4.7-4.7 12.3 0 17L333.9 256 138.5 451.5c-4.7 4.7-4.7 12.3 0 17l7.1 7.1c4.7 4.7 12.3 4.7 17 0l211.1-211c4.7-4.7 4.7-12.3 0-17l-211.1-211c-4.8-4.8-12.4-4.8-17.1-.1z"
+                />
+              </svg>
+            </div>
+            <div id="thirdshow">
+              
+              <div class="mb-1 d-flex justify-content-between px-3 pt-2">
+                <span class="h5">Activities</span>
+                <div>
+                  <a onclick="" class="btn border-0 p-0 secsm1 mr-2">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 448 512"
+                    >
+                      <path
+                        d="M443.5 98.5l-211 211.1c-4.7 4.7-12.3 4.7-17 0L4.5 98.5c-4.7-4.7-4.7-12.3 0-17l7.1-7.1c4.7-4.7 12.3-4.7 17 0L224 269.9 419.5 74.5c4.7-4.7 12.3-4.7 17 0l7.1 7.1c4.6 4.6 4.6 12.2-.1 16.9zm0 111l-7.1-7.1c-4.7-4.7-12.3-4.7-17 0L224 397.9 28.5 202.5c-4.7-4.7-12.3-4.7-17 0l-7.1 7.1c-4.7 4.7-4.7 12.3 0 17l211 211.1c4.7 4.7 12.3 4.7 17 0l211-211.1c4.8-4.8 4.8-12.4.1-17.1z"
+                      />
+                    </svg>
+                  </a>
+                  <a onclick="closethirdnav()" class="btn border-0 p-0 secsm1">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 384 512"
+                    >
+                      <path
+                        d="M349.5 475.5l-211.1-211c-4.7-4.7-4.7-12.3 0-17l211.1-211c4.7-4.7 12.3-4.7 17 0l7.1 7.1c4.7 4.7 4.7 12.3 0 17L178.1 256l195.5 195.5c4.7 4.7 4.7 12.3 0 17l-7.1 7.1c-4.7 4.6-12.3 4.6-17-.1zm-111 0l7.1-7.1c4.7-4.7 4.7-12.3 0-17L50.1 256 245.5 60.5c4.7-4.7 4.7-12.3 0-17l-7.1-7.1c-4.7-4.7-12.3-4.7-17 0l-211.1 211c-4.7 4.7-4.7 12.3 0 17l211.1 211c4.8 4.8 12.4 4.8 17.1.1z"
+                      />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+              <ul class="nav flex-column">
+                <form class="form-inline p-0">
+                  <input
+                    class="border m-2 border-dark"
+                    type="search"
+                    placeholder="  Search Activities"
+                    aria-label="Search"
+                  />
+                </form>
+
+                <div class="my-2">
+                  <a
+                    class="nav-link text-dark p-0"
+                    data-toggle="collapse"
+                    href="#move"
+                    role="button"
+                    aria-expanded="true"
+                    aria-controls="move"
+                  >
+                    <span class="material-icons"> arrow_right </span> Move &
+                    Transform
+                  </a>
+
+                  <div class="collapse px-3" id="move">
+                    <li>
+                      <a href="#" class="nav-link text-dark rounded-sm border border-secondary p-1 my-2 copydata "
+                      onclick="btm_form1()"
+                        >Copy Data</a
+                      >
+                    </li>
+                    <li>
+                      <a href="" class="nav-link text-dark rounded-sm border border-secondary p-1 my-2 dataflow"
+                        >Data & Flow</a
+                      >
+                    </li>
+                  </div>
+                </div>
+
+                <a
+                  class="nav-link text-dark p-0"
+                  data-toggle="collapse"
+                  href="#iteration"
+                  role="button"
+                  aria-expanded="false"
+                  aria-controls="iteration"
+                >
+                  <span class="material-icons"> arrow_right </span>Iteration &
+                  Conditionals
+                </a>
+
+                <div class="collapse px-3" id="iteration">
+                  <li>
+                    <a href="" class="nav-link text-dark rounded-sm border border-secondary p-1 my-2"
+                      >Filter</a
+                    >
+                  </li>
+                  <li>
+                    <a href="" class="nav-link text-dark rounded-sm border border-secondary p-1 my-2"
+                      >For Each</a
+                    >
+                  </li>
+                  <li>
+                    <a href="" class="nav-link text-dark rounded-sm border border-secondary p-1 my-2"
+                      >If Condition</a
+                    >
+                  </li>
+                  <li>
+                    <a href="" class="nav-link text-dark rounded-sm border border-secondary p-1 my-2"
+                      >Switch</a
+                    >
+                  </li>
+                  <li>
+                    <a href="" class="nav-link text-dark rounded-sm border border-secondary p-1 my-2"
+                      >Until</a
+                    >
+                  </li>
+                </div>
+              </ul>
+            </div>
+          </div>
+          <div class="box3" id="box3">
+             <div id="myDiagramDiv"
+     style="flex-grow: 1; height: 600px; box-shadow: 0px 0xp 100px red; background-color:white; overflow: hidden;"></div>
+            <div class="btm-form" id="btm-form">
+              <ul class="nav nav-tabs sticky-top bg-white border" id="myTab" role="tablist">
+  <li class="nav-item" role="presentation">
+    <a class="nav-link" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">General</a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Source</a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="profile" aria-selected="false">Setting</a>
+  </li> 
+  <li class="nav-item" role="presentation">
+    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="profile" aria-selected="false">User Properties</a>
+  </li>
+  
+  <li class="nav-item ml-auto" role="presentation">
+    <a class="nav-link expand" onclick="btm_form1exp()" id="btm-form1-explg"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M6.101 359.293L25.9 379.092c4.686 4.686 12.284 4.686 16.971 0L224 198.393l181.13 180.698c4.686 4.686 12.284 4.686 16.971 0l19.799-19.799c4.686-4.686 4.686-12.284 0-16.971L232.485 132.908c-4.686-4.686-12.284-4.686-16.971 0L6.101 342.322c-4.687 4.687-4.687 12.285 0 16.971z"/></svg></a>
+     <a class="nav-link expand" onclick="btm_form1cont()" id="btm-form1-contlg"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M441.9 167.3l-19.8-19.8c-4.7-4.7-12.3-4.7-17 0L224 328.2 42.9 147.5c-4.7-4.7-12.3-4.7-17 0L6.1 167.3c-4.7 4.7-4.7 12.3 0 17l209.4 209.4c4.7 4.7 12.3 4.7 17 0l209.4-209.4c4.7-4.7 4.7-12.3 0-17z"/></svg></a>
+  </li>
+  
+</ul>
+<div class="tab-content " id="myTabContent">
+  <div class="tab-pane fade show active p-4" id="home" role="tabpanel" aria-labelledby="profile-tab">
+    <form>
+          <div class="form-group row no-gutters">
+            <label for="staticEmail" class="col-sm-1 col-form-label text-dark font-weight-normal">Container Name</label>
+            <div class="col-sm-3 ml-4">
+              <input type="text" class="form-control rounded-0" >
+            </div>
+          </div>
+         <div class="form-group row no-gutters">
+            <label for="staticEmail" class="col-sm-1 col-form-label text-dark font-weight-normal">File Name</label>
+            <div class="col-sm-3 ml-4">
+              <input type="text" class="form-control rounded-0" >
+            </div>
+          </div><div class="form-group row no-gutters">
+            <label for="staticEmail" class="col-sm-1 col-form-label text-dark font-weight-normal">Delimeter</label>
+            <div class="col-sm-3 ml-4">
+              <input type="text" class="form-control rounded-0" >
+            </div>
+          </div><div class="form-group row no-gutters">
+            <label for="staticEmail" class="col-sm-1 col-form-label text-dark font-weight-normal">File Type</label>
+            <div class="col-sm-3 ml-4">
+              <input type="text" class="form-control rounded-0" >
+            </div>
+          </div>
+          <div class="form-group row no-gutters">
+            <label for="staticEmail" class="col-sm-1 col-form-label text-dark font-weight-normal">File Path</label>
+            <div class="col-sm-3 ml-4">
+              <input type="text" class="form-control rounded-0" >
+            </div>
+          </div>
+          <div class="form-group row no-gutters">
+            <label for="staticEmail" class="col-sm-1 col-form-label text-dark font-weight-normal">Frequency</label>
+            <div class="col-sm-3 ml-4">
+              <input type="text" class="form-control rounded-0" >
+            </div>
+          </div>
+  </form>
+  </div>
+  <div class="tab-pane fade p-4" id="profile" role="tabpanel" aria-labelledby="profile-tab"> <div class="form-group row no-gutters">
+            <label for="staticEmail" class="col-sm-1 col-form-label text-dark font-weight-normal">Source Dataset</label>
+            <div class="col-sm-3 ml-4">
+               <select class="form-control rounded-0" id="exampleFormControlSelect1">
+                  <option>Select...</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+              </select>
+            </div>
+            <div class="col-sm-1">
+               <div class="col-1">
+                  <a class="btn sources p-0"
+                     onclick="opendataslect()"
+                    ><svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 384 512"
+                    >
+                      <path
+                        d="M376 232H216V72c0-4.42-3.58-8-8-8h-32c-4.42 0-8 3.58-8 8v160H8c-4.42 0-8 3.58-8 8v32c0 4.42 3.58 8 8 8h160v160c0 4.42 3.58 8 8 8h32c4.42 0 8-3.58 8-8V280h160c4.42 0 8-3.58 8-8v-32c0-4.42-3.58-8-8-8z"
+                      />
+                    </svg>
+                  </a>
+                </div>
+            </div>
+            
+            
+          </div></div>
+  <div class="tab-pane fade p-3" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+    <div class="row">
+      <div class="col-8 ml-4">
+            <table class="table table-light">
+  <thead class="bg-blue">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+    </tr>
+  </thead>
+  <tbody class="border">
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td colspan="2">Larry the Bird</td>
+      <td>@twitter</td>
+    </tr>
+  </tbody>
+</table>
+      </div>
+    </div>
+  </div>
+</div>
+            </div>
+        </div>
+      </div>
+      <!-- reference -->
+    </div>
+    <div class="dataselect border border-secondary shadow-sm" id="dataselect">
+      <div class="dataselect-main p-4">
+        <div class="h5 pb-3">New Dataset</div>
+        <div class="h6 font-weight-normal pb-3">In pipeline activities and data flows, reference a dataset to specify the location and structure of your data within a data store. <a href="">Learn More</a> 
+        </div>
+        <div>Select a data store</div>
+        <form>
+  <div class="form-group">
+    <input type="email" class="form-control border border-secondary mt-2" placeholder="Search" id="exampleInputEmail1" aria-describedby="emailHelp">
+  </div>
+  </form>
+  <ul class="nav border-bottom d-flex justify-content-around f-600">
+  <li class="nav-item"><a href="#" class="nav-link active">All</a></li>
+  <li class="nav-item"><a href="#" class="nav-link">Azure</a></li>
+  <li class="nav-item"><a href="#" class="nav-link">Database</a></li>
+  <li class="nav-item"><a href="#" class="nav-link">File</a></li>
+  <li class="nav-item"><a href="#" class="nav-link">Generic Protocol</a></li>
+  <li class="nav-item"><a href="#" class="nav-link">NoSQL</a></li>
+  <li class="nav-item"><a href="#" class="nav-link">Service and Apps</a></li>
+</ul>
+<div class="datasetList mt-3">
+  <div class="row px-3">
+    <div class="col-4 box4 p-1" onclick="closedataselect()">
+      <div class="border h-100">
+        <div class="row ">
+          <div class="col-12"><img src="" alt="" width="100" height="100" class="border-0"></div>
+          <div class="col-12 text-center h5 font-weight-light">Azure Blob Storage</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-4 box4 p-1" onclick="closedataselect()">
+      <div class="border h-100">
+        <div class="row">
+          <div class="col-12"></div>
+          <div class="col-12"></div>
+        </div>
+      </div>
+    </div>
+    <div class="col-4 box4 p-1" onclick="closedataselect()">
+      <div class="border h-100">
+        <div class="row">
+          <div class="col-12"></div>
+          <div class="col-12"></div>
+        </div>
+      </div>
+    </div>
+    <div class="col-4 box4 p-1" onclick="closedataselect()">
+      <div class="border h-100">
+        <div class="row">
+          <div class="col-12"></div>
+          <div class="col-12"></div>
+        </div>
+      </div>
+    </div>
+    <div class="col-4 box4 p-1" onclick="closedataselect()">
+      <div class="border h-100">
+        <div class="row">
+          <div class="col-12"></div>
+          <div class="col-12"></div>
+        </div>
+      </div>
+    </div>
+    <div class="col-4 box4 p-1" onclick="closedataselect()">
+      <div class="border h-100">
+        <div class="row">
+          <div class="col-12"></div>
+          <div class="col-12"></div>
+        </div>
+      </div>
+    </div>
+    <div class="col-4 box4 p-1" onclick="closedataselect()">
+      <div class="border h-100">
+        <div class="row">
+          <div class="col-12"></div>
+          <div class="col-12"></div>
+        </div>
+      </div>
+    </div>
+    <div class="col-4 box4 p-1" onclick="closedataselect()">
+      <div class="border h-100">
+        <div class="row">
+          <div class="col-12"></div>
+          <div class="col-12"></div>
+        </div>
+      </div>
+    </div>
+    <div class="col-4 box4 p-1" onclick="closedataselect()">
+      <div class="border h-100">
+        <div class="row">
+          <div class="col-12"></div>
+          <div class="col-12"></div>
+        </div>
+      </div>
+    </div>
+    <div class="col-4 box4 p-1" onclick="closedataselect()">
+      <div class="border h-100">
+        <div class="row">
+          <div class="col-12"></div>
+          <div class="col-12"></div>
+        </div>
+      </div>
+    </div>
+    <div class="col-4 box4 p-1" onclick="closedataselect()">
+      <div class="border h-100">
+        <div class="row">
+          <div class="col-12"></div>
+          <div class="col-12"></div>
+        </div>
+      </div>
+    </div>
+    <div class="col-4 box4 p-1" onclick="closedataselect()">
+      <div class="border h-100">
+        <div class="row">
+          <div class="col-12"></div>
+          <div class="col-12"></div>
+        </div>
+      </div>
+    </div>
+    <div class="col-4 box4 p-1" onclick="closedataselect()">
+      <div class="border h-100">
+        <div class="row">
+          <div class="col-12"></div>
+          <div class="col-12"></div>
+        </div>
+      </div>
+    </div>
+    <div class="col-4 box4 p-1" onclick="closedataselect()">
+      <div class="border h-100">
+        <div class="row">
+          <div class="col-12"></div>
+          <div class="col-12"></div>
+        </div>
+      </div>
+    </div>
+    <div class="col-4 box4 p-1" onclick="closedataselect()">
+      <div class="border h-100">
+        <div class="row">
+          <div class="col-12"></div>
+          <div class="col-12"></div>
+        </div>
+      </div>
+    </div>
+    <div class="col-4 box4 p-1" onclick="closedataselect()">
+      <div class="border h-100">
+        <div class="row">
+          <div class="col-12"></div>
+          <div class="col-12"></div>
+        </div>
+      </div>
+    </div>
+    <div class="col-4 box4 p-1" onclick="closedataselect()">
+      <div class="border h-100">
+        <div class="row">
+          <div class="col-12"></div>
+          <div class="col-12"></div>
+        </div>
+      </div>
+    </div>
+    <div class="col-4 box4 p-1" onclick="closedataselect()">
+      <div class="border h-100">
+        <div class="row">
+          <div class="col-12"></div>
+          <div class="col-12"></div>
+        </div>
+      </div>
+    </div>
+    <div class="col-4 box4 p-1" onclick="closedataselect()">
+      <div class="border h-100">
+        <div class="row">
+          <div class="col-12"></div>
+          <div class="col-12"></div>
+        </div>
+      </div>
+    </div>
+    <div class="col-4 box4 p-1" onclick="closedataselect()">
+      <div class="border h-100">
+        <div class="row">
+          <div class="col-12"></div>
+          <div class="col-12"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="mt-3 d-flex justify-content-between"><button class="btn bg-primary text-white rounded-0">Continue</button><button class="btn bg-white text-secondary rounded-0 border border-dark">Cancel</button></div>
+      </div>
+
+      
+      
+
+      </div>
+    </div>
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+      integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+      crossorigin="anonymous"
+    ></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="js/script.js"></script>
+    <script id="code" src="js/datapull.js">
+     
+    </script>
+  </body>
+</html>
