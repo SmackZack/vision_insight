@@ -1,0 +1,139 @@
+body {
+  background-image: url('../img/chart.jpg');
+  background-size: cover;
+  height: 100%;
+}
+
+#maincontent {
+  margin-left: 0px;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    color: rgb(0, 0, 0);
+    background-color: #cdd1d6;
+}
+
+.box1 {
+  height: 35vh;
+  width: 100%;
+  overflow: hidden;
+  background-color: white;
+  overflow: scroll;
+
+}
+
+.box2 {
+  width: 100%;
+  overflow: hidden;
+  background-color: white;
+  overflow: hidden;
+
+}
+
+.box3 {
+  height: 75vh;
+  width: 100%;
+  overflow: hidden;
+  background-color: white;
+  overflow: scroll;
+
+}
+
+.bg-red div,.bg-green div {
+    background-color: red;
+    width: fit-content;
+    padding: 2px 7px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 4px black;
+}
+
+.bg-yellow div {
+  background-color: gold;
+    width: fit-content;
+    padding: 2px 7px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 4px black;
+}
+
+.bg-green div {
+  background-color: lawngreen;
+}
+
+.table td, .table th {
+    padding: 1em;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+}
+
+thead tr th {
+  background-color: #c59b54;
+  color: white;
+  font-weight: normal;
+  text-align: center;
+}
+
+thead tr{
+  border: solid 4px gold;
+}
+
+.bg-2 {
+  border-left: solid 5px red ;
+}
+
+
+.bg-2 td {
+  border-bottom: solid 5px red;
+  border-top: solid 5px red;
+}
+
+.bg-5 {
+  border-left: solid 5px  blueviolet;
+}
+
+
+.bg-5 td {
+  border-bottom: solid 5px blueviolet;
+  border-top: solid 5px blueviolet;
+}
+
+.bg-3 {
+  background-color: rgba(126, 252, 0, 0.507);
+}
+
+.bg-4 {
+  background-color: rgba(255, 255, 0, 0.493);
+}
+
+.t-4 {
+  color:rgba(255, 255, 0, 0.493);
+}
+
+.t-3 {
+  color: rgba(126, 252, 0, 0.507);
+}
+
+.pagination .page-item.active .page-link {
+    border: 1px solid white;
+    color: white;
+    background-color: #0078D7;
+}
+
+.pagination .page-item {
+    margin-right: 0;
+}
+
+.border-gold {
+  border: solid 4px gold;
+}
+
+* {
+  font-size: 20px;
+}
+
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 0px;
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.2;
+    color: inherit;
+}

@@ -15,6 +15,10 @@ input.ng-invalid.ng-touched{
   border-bottom: red 2px solid !important;
 }
 
-#part2 {
-  display: none;
+#dialing-code {
+  background-color: red;
+}
+
+select {
+  font-size: 14px;
 }

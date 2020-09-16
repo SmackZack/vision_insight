@@ -51,7 +51,7 @@
       </ul>
       <div class="nav-item media px-2">
         <div class="media-body d-none d-md-block" style="height: 40px;">
-          <div class="font-weight-semibold f-12 pt-1 m-0">Someone@outlook.com</div>
+          <div class="font-weight-semibold f-12 pt-0 m-0" id="username">Someone@outlook.com</div>
           <div class="f-10 text-right">Default Directory</div>
         </div>
         <img class="rounded-circle p-1 m-0" height="40px" width="40px" src="img/avatar.png"
@@ -494,7 +494,18 @@
         <a class="nav-link text-dark" href="#"><i class="fal fa-trash-alt text-primary h5 mb-0 pr-2"></i><span>Discard
             all</span></a>
       </nav>
-      <div class="factoryRes border" id="secsidebar">
+
+      <div class="maincontent" id="maincontent">
+        <div id="myDiagramDiv" style="
+            flex-grow: 1;
+            height: 600px;
+            box-shadow: 0px 0xp 100px red;
+            background-color: white;
+            overflow: hidden;
+
+          "></div>
+      </div>
+       <div class="factoryRes border" id="secsidebar">
         <button class="btn p-0 bg-white" onclick="openSecsidebar()" id="secsidebar1">
           <i class="fal fa-angle-double-right"></i>
         </button>
@@ -521,7 +532,7 @@
                   data-placement="right" title="Action">
                   <i class="fal h4 mb-0 pt-1 fa-plus ml-2"></i>
                 </button>
-                <div class="dropdown-menu bg-white position-fixed border pt-2">
+                <div class="dropdown-menu bg-white border-dark pt-2 shadow-lg">
                   <a class="dropdown-item f-12 p-1 pr-1 px-3 py-2" href="#"><i
                       class="fal f-13 text-primary mr-2 fa-database fa-rotate-90"></i>Pipeline</a>
                   <a class="dropdown-item f-12 p-1 pr-1 px-3 py-2" href="#"><i
@@ -633,16 +644,6 @@
           </div>
         </div>
 
-      </div>
-      <div class="maincontent" id="maincontent">
-        <div id="myDiagramDiv" style="
-            flex-grow: 1;
-            height: 600px;
-            box-shadow: 0px 0xp 100px red;
-            background-color: white;
-            overflow: hidden;
-
-          "></div>
       </div>
     </div>
   </div>

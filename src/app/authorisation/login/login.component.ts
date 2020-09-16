@@ -13,7 +13,9 @@ export class LoginComponent implements OnInit {
 
   constructor(private http: HttpClient, private router: Router) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+
+  }
 
   onCreatePost(postData: { username: string; password: string }) {
     // Send Http request
@@ -33,12 +35,23 @@ export class LoginComponent implements OnInit {
               postsArray.push({ ...responseData[key], id: key });
             }
           }
-          return postsArray[0].details[0].login_status;
+          var x = responseData
+          return x;
         })
       )
       .subscribe((details) => {
-        if (details === true) {
-          window.location.replace("assets/Homepagem.html");
+        console.log(details)
+        var txt = details.token;
+        var username = details.response_string.responsedata.Response[0].username;
+        localStorage.setItem("token", txt);
+        localStorage.setItem("username", username);
+        var x = details.response_string.responsedata.Response[0].login_status;
+        console.log(x);
+        if (x == true) {
+           window.location.replace("assets/Homepagem.html");
+        }
+        else {
+          alert('Wrong Credentials')
         }
       });
   }

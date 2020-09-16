@@ -1,72 +1,150 @@
-body {
-  background-color: rgba(211, 211, 211, 0.205);
+.box {
+  margin-top: -78px;
+  padding-top: 78px;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.63) ;
 }
 
 #maincontent {
-  margin-left: 300px;
-
+  margin-left: 0px;
+  background-image: url('../img/chart.jpg');
+  background-size: cover;
 }
 
-.table1, .table2, .table3, .table4 {
-  overflow-y: scroll;
-}
-
-.table1 {
-  height: 43vh;
-}
-
-.table2 {
-  height: 43vh;
-}
-
-.table3 {
-  height: 88vh;
-}
-
-.table4 {
-  height: 66vh;
-}
-
-.map {
-  height: 12vh;
-}
-
-.accept {
-  height: 5vh;
-}
-
-.factoryRes {
-  padding-top: 40px;
-}
-
-table {
+.box1 {
+  height: 35vh;
   width: 100%;
-  border-collapse: collapse;
+  overflow: hidden;
+  background-color: white;
+  overflow: scroll;
+
 }
 
-td, th {
-  border: solid 0.1px rgba(0, 0, 0, 0.192);
+.box3 {
+  height: 40vh;
+  width: 100%;
+  overflow: hidden;
+  background-color: white;
+  overflow: scroll;
+}
+
+.box2 {
+  height: 35vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+.box4 {
+  height: 500px;
+  background-color: white;
+}
+
+.box5 {
+  overflow: scroll !important;
+  width: 100%;
+}
+
+.border-red {
+  border: 1px solid red;
+}
+
+.box6 {
+  height: 70vh;
+}
+
+
+.text-red {
+  color: red;
+}
+
+.text-green {
+  color: lawngreen;
+}
+
+
+
+thead {
+  background-color: rgba(128, 128, 128, 0.692);
 }
 
 .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
-    color: blue;
-    background-color: #f3f2f1;
+    color: rgb(0, 0, 0);
+    background-color: #cdd1d6;
 }
 
-.t .table1,.t .table2 {
-  height: 40vh;
+.h3 {
+  background-color: white;
 }
 
-.t .table3 {
-  height: 83vh;
+.menu {
+  position: fixed;
+  right: 0px;
+  bottom: 0px;
 }
 
-.t .table4 {
-  height: 60vh;
+h6 {
+  margin-bottom: 0px;
 }
 
-.t {
-  margin-left: 0px !important;
+.pipelineMenu {
+    position: relative;
+    background-color: white;
+    height: 50px;
+    z-index: 20;
+    padding: 10px;
+}
+
+.border-gold {
+  border: solid 4px gold;
+}
+
+.pagination .page-item.active .page-link {
+    border: 1px solid white;
+    color: white;
+    background-color: #0078D7;
+}
+
+.pagination .page-item {
+    margin-right: 0;
+}
+
+.table td, .table th {
+    padding: 1em;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+}
+
+.bg-red div,.bg-green div {
+    background-color: red;
+    width: fit-content;
+    padding: 2px 7px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 4px black;
+}
+
+.bg-yellow div {
+  background-color: gold;
+    width: fit-content;
+    padding: 2px 7px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 4px black;
+}
+
+.bg-green div {
+  background-color: lawngreen;
 }
 
 
+
+thead tr th {
+  background-color: #c59b54;
+  color: white;
+  font-weight: normal;
+  text-align: center;
+}
+
+.bg-1 {
+  background-color: #c59b54;
+}

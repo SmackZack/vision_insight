@@ -49,8 +49,8 @@ diagram.nodeTemplate = $(
       parameter1: "4",
       stroke: blue,
       strokeWidth: 1,
-      width: 180,
-      height: 110,
+      width: 201,
+      height: 120,
     }
   ),
 
@@ -63,8 +63,8 @@ diagram.nodeTemplate = $(
       },
     },
     {
-      font: "12pt FontAwesome",
-      width: 179,
+      font: "14pt FontAwesome",
+      width:200,
       height: 30,
       alignment: go.Spot.Left,
       verticalAlignment: go.Spot.Center,
@@ -82,7 +82,7 @@ diagram.nodeTemplate = $(
       },
     },
     {
-      font: "12pt  Segoe UI,sans-serif",
+      font: "17pt  Segoe UI,sans-serif",
       background: lightblue,
       alignment: new go.Spot(0.5, 0.5, 0, 0),
     },
@@ -110,11 +110,11 @@ var nodeDataArray = [
   { name: "Data Cleanse", key: "2", items: "2", loc: "250 0" },
   { name: "Data Validate", key: "3", items: "2", loc: "500 0" },
   { name: "Data Embed", key: "4a", items: "2", loc: "750 0" },
-  { name: "Data Train", key: "4b", items: "2", loc: "750 150" },
+  { name: "Data Train", key: "4b", items: "2", loc: "750 180" },
 
   { name: "Data Map", key: "5a", items: "3", loc: "1000 0" },
-  { name: "Data Relationship", key: "5b", loc: "1000 150" },
-  { name: "Data Join", key: "5c", items: "5c", loc: "1000 300" },
+  { name: "Data Relationship", key: "5b", loc: "1000 180" },
+  { name: "Data Join", key: "5c", items: "5c", loc: "1000 360" },
   { name: "Data Merge", key: "6", items: "6", loc: "1250 0" },
   { name: "Data Check", key: "7", items: "7", loc: "1500 0" },
   { name: "Data Finalize", key: "8", items: "8", loc: "1750 0" },
@@ -159,3 +159,6 @@ function load() {
   diagram.model = go.Model.fromJSON(diagram.model.toJSON());
   return (diagram.model = new go.GraphLinksModel(nodeDataArray, linkDataArray));
 }
+
+diagram.model = go.Model.fromJSON(diagram.model.toJSON());
+diagram.model = new go.GraphLinksModel(nodeDataArray, linkDataArray);

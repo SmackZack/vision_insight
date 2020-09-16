@@ -6,12 +6,14 @@ import { RegistrationComponent } from "./authorisation/registration/registration
 import { ForgetpasswordComponent } from "./authorisation/forgetpassword/forgetpassword.component";
 import { FormsModule , ReactiveFormsModule} from "@angular/forms";
 import { DatavalidateComponent } from './datavalidate/datavalidate.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   { path: "", component: LoginComponent },
   { path: "register", component: RegistrationComponent },
   { path: "forgetpassword", component: ForgetpasswordComponent },
   { path: "dv", component: DatavalidateComponent },
+  { path: "test", component: HomeComponent}
 ];
 
 @NgModule({

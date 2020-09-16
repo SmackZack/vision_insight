@@ -1,3 +1,5 @@
+
+
 function openSidebar() {
   document.getElementById("sidebar").style.width = "228px";
   document.getElementById("innercontent").style.marginLeft = "228px";
@@ -138,3 +140,78 @@ function rp1() {
   document.getElementById("copydata1").style.position = "static";
 }
 
+var settings = {
+  url: "http://apiserver.centralindia.azurecontainer.io:5000/dataset/get/",
+  method: "GET",
+  timeout: 0,
+  headers: {
+    "x-access-token":
+      "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImFqYXlzbyIsImV4cCI6MTYwMDI2MzU0M30.MSp8FSL-V8fMTMxOsxGYKSNNREX_Ms6Av8HrLlX7jvI",
+  },
+};
+
+$.ajax(settings).done(function (response) {
+  var x = response;
+  console.log(x)
+  // var text = "";
+  // console.log(localStorage.getItem("token"));
+  // var y = JSON.parse(response).responsedata.Response;
+  // var x = JSON.parse(y);
+  // console.log(x);
+  // for (i in x) {
+  //   text +=
+  //     '<li class="nav-item py-1"><a class="nav-link text-dark f-13"><i class="fal fa-database text-primary fa-rotate-90 mr-2"></i>' +
+  //     x[i].datasourcename +
+  //     "</a></li>";
+  // }
+  // document.getElementById("test").innerHTML = text;
+  // console.log(text);
+});
+
+const generateObj = (obj, arr, val) => {
+  if (arr.length === 1) {
+    obj[arr[0]] = val;
+    return;
+  }
+
+  if (!obj[arr[0]]) {
+    obj[arr[0]] = {};
+  }
+
+  const restArr = arr.splice(1);
+  generateObj(obj[arr[0]], restArr, val);
+};
+const getData = (id) => {
+  const form = document.getElementById(id);
+  const inputCollection = form.getElementsByTagName("input");
+  const inputArray = [...inputCollection];
+  const data = {};
+  inputArray.map((input) => {
+    const { name, value } = input;
+    const splitName = name.split(".");
+    generateObj(data, splitName, value);
+  });
+  return data;
+};
+//above code generate json from the input form
+const getDataBtn = document.getElementById("submit1");
+getDataBtn.addEventListener("click", () => {
+  const data = getData("json");
+  console.log(JSON.stringify(data));
+  var settings = {
+    url: "http://apiserver.centralindia.azurecontainer.io:5000/dataset/add/",
+    method: "POST",
+    timeout: 0,
+    headers: {
+      "x-access-token": localStorage.getItem("token"),
+      "Content-Type": "application/json",
+    },
+    data: JSON.stringify(data),
+  };
+
+  $.ajax(settings).done(function (response) {
+    console.log(response);
+  });
+});
+
+document.getElementById("username").innerHTML = localStorage.getItem("username");
